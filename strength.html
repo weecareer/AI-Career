@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 강점 프로필 만들기 — 프롬프트 작성 활동지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --navy:#15224a;--blue:#2f6bed;--sky:#42a5f5;--mint:#27b99a;--cream:#fff6df;
+    --bg:#eaf0fb;--card:#f3f6fd;--line:#dbe4f6;--ink:#1f2b4d;--muted:#7886a8;
+    --pink:#ffeff4;--yellow:#fff7d8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Jua',sans-serif;background:linear-gradient(135deg,#dfe9fb,#f7f9ff);color:var(--ink);padding:24px 14px 50px;}
+  .wrap{max-width:1180px;margin:0 auto;background:#fff;border:1px solid #e0e7f6;border-radius:24px;box-shadow:0 20px 60px rgba(21,34,74,.15);padding:30px 38px 24px;}
+  header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;border-bottom:4px solid var(--navy);padding-bottom:18px;}
+  .titlebox{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .badge{background:var(--blue);color:#fff;border-radius:999px;padding:8px 16px;font-size:15px;box-shadow:0 5px 15px rgba(47,107,237,.28);}
+  h1{font-weight:400;font-size:31px;color:var(--blue);letter-spacing:-.5px;line-height:1.15;}
+  .meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--navy);font-size:16px;}
+  .meta label{display:flex;align-items:flex-end;gap:6px;}
+  .meta input{font-family:inherit;font-size:16px;border:none;border-bottom:2px solid #b8c4df;padding:4px 6px;width:90px;}
+  .meta input.name{width:150px;}
+  .meta input:focus{outline:none;border-bottom-color:var(--blue);}
+  .intro{margin:18px 0 24px;background:var(--yellow);border:1px solid #f2dda2;border-radius:16px;padding:15px 18px;line-height:1.6;font-size:17px;color:#4a3f22;}
+  .grid{display:grid;grid-template-columns:1fr 1.08fr;gap:30px;align-items:start;}
+  .section-title{font-size:21px;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .field{background:var(--card);border:1px solid var(--line);border-left:7px solid #b8c8ef;border-radius:17px;padding:15px 17px;margin-bottom:13px;transition:.15s;}
+  .field:focus-within{border-color:var(--blue);border-left-color:var(--blue);box-shadow:0 8px 18px rgba(47,107,237,.12);}
+  .label{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:9px;}
+  .label strong{font-size:18px;color:var(--navy);font-weight:400;}
+  .label span{font-size:13px;color:var(--muted);}
+  textarea{width:100%;min-height:58px;resize:vertical;border:1px solid #cfdaf0;border-radius:12px;background:#fff;font-family:inherit;font-size:16px;color:var(--ink);padding:11px 13px;line-height:1.45;}
+  textarea:focus{outline:none;border-color:var(--blue);}
+  textarea::placeholder{color:#a6b2cd;}
+  .fixed-card{background:var(--pink);border:1px solid #f4ceda;border-radius:17px;padding:15px 17px;margin-bottom:13px;line-height:1.6;}
+  .fixed-card strong{color:#b02955;font-weight:400;}
+  .strengths{font-size:15px;color:#4d5b7d;background:#fff;border:1px dashed #cbd7ef;border-radius:12px;padding:12px;line-height:1.65;margin-top:8px;}
+  .promptbox{position:sticky;top:16px;background:var(--cream);border:3px dashed var(--sky);border-radius:22px;padding:24px 22px 18px;min-height:590px;display:flex;flex-direction:column;}
+  .prompt-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+  .prompt-head h2{font-size:22px;font-weight:400;color:var(--navy);}
+  .hint{font-size:14px;color:var(--muted);}
+  pre{white-space:pre-wrap;word-break:keep-all;background:#fff;border:1px solid #eadcae;border-radius:16px;padding:18px;font-family:'Jua',sans-serif;font-size:17px;line-height:1.65;color:var(--navy);min-height:420px;}
+  .empty{color:#9ca9c3;}
+  .buttons{display:grid;grid-template-columns:1fr 140px;gap:10px;margin-top:14px;}
+  button{font-family:inherit;font-size:17px;border:none;border-radius:13px;padding:15px 14px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;}
+  #copyBtn{background:var(--navy);color:#fff;}
+  #copyBtn:hover{background:#213466;}
+  #copyBtn.done{background:var(--mint);}
+  #resetBtn{background:#edf2fb;color:var(--navy);border:1px solid #d5e0f4;}
+  #resetBtn:hover{background:#e1e9f8;}
+  footer{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  @media(max-width:850px){.wrap{padding:22px 17px 18px;border-radius:17px;}h1{font-size:24px}.grid{grid-template-columns:1fr}.promptbox{position:static;min-height:0}.buttons{grid-template-columns:1fr}.meta input.name{width:120px}pre{font-size:16px}}
+  @media print{body{background:#fff;padding:0}.wrap{box-shadow:none;border:none}.buttons{display:none}.promptbox{position:static}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div class="titlebox">
+      <span class="badge">프롬프트 작성 연습</span>
+      <h1>AI 강점 프로필 만들기</h1>
+    </div>
+    <div class="meta">
+      <label>학년 <input type="text"></label>
+      <label>반 <input type="text"></label>
+      <label>성명 <input class="name" type="text"></label>
+    </div>
+  </header>
+
+  <div class="intro">
+    AI가 나를 더 잘 이해하려면 <strong>구체적인 정보</strong>가 필요합니다. 왼쪽 입력칸을 채우면 오른쪽에 AI에게 붙여넣을 프롬프트가 자동으로 완성됩니다.
+  </div>
+
+  <div class="grid">
+    <section>
+      <h2 class="section-title"><i class="fa-solid fa-pen-to-square"></i> 나에 대한 정보 입력하기</h2>
+
+      <div class="fixed-card">
+        <strong>AI에게 줄 역할</strong><br>
+        너는 중학교 3학년 학생의 강점을 찾아주는 진로상담 전문가야.
+      </div>
+
+      <div class="field">
+        <div class="label"><strong>① 내가 좋아하는 것</strong><span>취미, 관심 분야, 좋아하는 활동</span></div>
+        <textarea data-key="like" placeholder="예) 그림 그리기, 게임, 친구와 이야기하기, 동물, 과학 영상 보기"></textarea>
+      </div>
+      <div class="field">
+        <div class="label"><strong>② 내가 잘한다고 느끼는 것</strong><span>스스로 생각하는 장점</span></div>
+        <textarea data-key="good" placeholder="예) 아이디어 내기, 친구 말 들어주기, 계획 세우기, 문제 풀기"></textarea>
+      </div>
+      <div class="field">
+        <div class="label"><strong>③ 친구들이 말하는 내 모습</strong><span>다른 사람이 보는 나</span></div>
+        <textarea data-key="friend" placeholder="예) 차분하다, 웃기다, 책임감 있다, 꼼꼼하다, 잘 도와준다"></textarea>
+      </div>
+      <div class="field">
+        <div class="label"><strong>④ 내가 자주 하는 행동</strong><span>평소 습관이나 태도</span></div>
+        <textarea data-key="habit" placeholder="예) 궁금한 것은 찾아본다, 맡은 일을 끝까지 한다, 친구 의견을 정리한다"></textarea>
+      </div>
+      <div class="field">
+        <div class="label"><strong>⑤ 힘들어도 해내려고 하는 것</strong><span>노력하는 모습</span></div>
+        <textarea data-key="effort" placeholder="예) 발표는 긴장되지만 준비한다, 어려운 문제도 다시 시도한다"></textarea>
+      </div>
+
+      <div class="fixed-card">
+        <strong>AI가 고를 수 있는 20가지 강점</strong>
+        <div class="strengths">
+          창의성, 호기심, 책임감, 배려, 협력, 리더십, 의사소통, 문제해결력, 도전정신, 끈기, 자기관리, 공감능력, 논리적 사고, 성실함, 유연성, 탐구심, 계획성, 집중력, 적응력, 발표력
+        </div>
+      </div>
+    </section>
+
+    <section class="promptbox">
+      <div class="prompt-head">
+        <h2><i class="fa-solid fa-wand-magic-sparkles"></i> 완성된 프롬프트</h2>
+        <span class="hint">복사 후 ChatGPT/Gemini에 붙여넣기</span>
+      </div>
+      <pre id="promptText"></pre>
+      <div class="buttons">
+        <button id="copyBtn"><i class="fa-solid fa-copy"></i> 프롬프트 복사하기</button>
+        <button id="resetBtn"><i class="fa-solid fa-rotate-left"></i> 다시 쓰기</button>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <span>좋은 프롬프트 = 역할 + 나의 정보 + 부탁 + 결과 형태</span>
+    <span>AI의 답은 정답이 아니라, 나를 이해하기 위한 출발점입니다.</span>
+  </footer>
+</main>
+
+<script>
+  const fields = document.querySelectorAll('textarea[data-key]');
+  const promptText = document.getElementById('promptText');
+  const copyBtn = document.getElementById('copyBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const labels = {
+    like:'내가 좋아하는 것', good:'내가 잘한다고 느끼는 것', friend:'친구들이 말하는 내 모습', habit:'내가 자주 하는 행동', effort:'힘들어도 해내려고 하는 것'
+  };
+
+  function val(key){
+    const el = document.querySelector(`textarea[data-key="${key}"]`);
+    return el.value.trim() || `[${labels[key]}을 입력하세요]`;
+  }
+
+  function buildPrompt(){
+    return `너는 중학교 3학년 학생의 강점을 찾아주는 진로상담 전문가야.\n\n다음은 나에 대한 정보야.\n\n1. 내가 좋아하는 것: ${val('like')}\n2. 내가 잘한다고 느끼는 것: ${val('good')}\n3. 친구들이 말하는 내 모습: ${val('friend')}\n4. 내가 자주 하는 행동: ${val('habit')}\n5. 힘들어도 해내려고 하는 것: ${val('effort')}\n\n아래 20가지 강점 중에서 나에게 가장 잘 어울리는 강점 5가지를 골라줘.\n\n창의성, 호기심, 책임감, 배려, 협력, 리더십, 의사소통, 문제해결력, 도전정신, 끈기, 자기관리, 공감능력, 논리적 사고, 성실함, 유연성, 탐구심, 계획성, 집중력, 적응력, 발표력\n\n결과는 다음 형식으로 작성해줘.\n\n1. 강점 5가지와 그 이유를 표로 정리하기\n2. 나를 가장 잘 표현하는 프로필 이름 하나 지어주기\n   예: 호기심 많은 탐험가, 상상을 현실로 만드는 창조가, 마음을 잇는 공감가\n3. 이 프로필 이름이 붙은 이유를 3문장으로 설명하기\n4. 내가 더 키우면 좋은 강점 1가지 제안하기\n\n중학교 3학년이 이해하기 쉬운 말로 따뜻하게 설명해줘. 단, 나에 대한 정보에 근거해서 설명하고, 근거가 부족한 내용은 단정하지 말아줘.`;
+  }
+
+  function update(){
+    promptText.textContent = buildPrompt();
+    const allEmpty = Array.from(fields).every(f => !f.value.trim());
+    promptText.classList.toggle('empty', allEmpty);
+  }
+
+  fields.forEach(f => f.addEventListener('input', update));
+
+  copyBtn.addEventListener('click', async () => {
+    const text = buildPrompt();
+    try { await navigator.clipboard.writeText(text); }
+    catch(e){
+      const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy'); ta.remove();
+    }
+    const original = copyBtn.innerHTML;
+    copyBtn.classList.add('done');
+    copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> 복사 완료! AI에게 붙여넣어 보세요';
+    setTimeout(()=>{ copyBtn.classList.remove('done'); copyBtn.innerHTML = original; }, 1800);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    if(confirm('작성한 내용을 모두 지울까요?')){
+      fields.forEach(f => f.value = '');
+      update();
+    }
+  });
+
+  update();
+</script>
+</body>
+</html>
