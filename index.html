@@ -225,18 +225,13 @@
       transform:translateY(-8px) scale(1.035);
       box-shadow:0 34px 64px rgba(32,53,111,.26);
       border-color:rgba(46,111,242,.34);
-      z-index:30;
+      z-index:80;
     }
     .step-card.spotlight{
       transform:translateY(-12px) scale(1.06);
       box-shadow:0 42px 82px rgba(46,111,242,.36);
       border-color:rgba(46,111,242,.55);
       z-index:60;
-      animation:spotlightPulse 1.6s ease-in-out infinite;
-    }
-    @keyframes spotlightPulse{
-      0%,100%{filter:brightness(1);}
-      50%{filter:brightness(1.06);}
     }
     .start-btn.is-active{
       background:linear-gradient(135deg,#1f56d9,#58d7b0);
@@ -389,17 +384,34 @@
 <script>
   const startBtn = document.getElementById('startExplore');
   const firstCard = document.getElementById('step1-card');
+  const stepCards = document.querySelectorAll('.step-card');
+
+  function setSpotlight(card) {
+    stepCards.forEach(item => item.classList.remove('spotlight'));
+    card.classList.add('spotlight');
+
+    if (startBtn) {
+      if (card === firstCard) startBtn.classList.add('is-active');
+      else startBtn.classList.remove('is-active');
+    }
+  }
 
   if (startBtn && firstCard) {
     startBtn.addEventListener('click', (event) => {
       event.preventDefault();
-      document.querySelectorAll('.step-card.spotlight').forEach(card => card.classList.remove('spotlight'));
-      firstCard.classList.add('spotlight');
-      startBtn.classList.add('is-active');
+      setSpotlight(firstCard);
       firstCard.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
       firstCard.focus({ preventScroll: true });
     });
   }
+
+  stepCards.forEach(card => {
+    card.addEventListener('pointerenter', () => {
+      if (document.querySelector('.step-card.spotlight')) setSpotlight(card);
+    });
+    card.addEventListener('focus', () => setSpotlight(card));
+    card.addEventListener('click', () => setSpotlight(card));
+  });
 </script>
 
 </body>
