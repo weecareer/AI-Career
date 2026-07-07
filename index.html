@@ -1,140 +1,406 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI와 함께 떠나는 진로탐험</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-<style>
-:root{
-  --navy:#15224a; --blue:#2f6bed; --mint:#27b99a; --yellow:#ffd978;
-  --pink:#ff7b9c; --purple:#7d65d8; --bg1:#edf5ff; --bg2:#fff8e8;
-  --card:#ffffff; --line:#dfe7f6; --muted:#6f7b96; --ink:#1d2945;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{
-  font-family:'Jua',sans-serif; color:var(--ink);
-  min-height:100vh; padding:28px 16px 50px;
-  background:
-    radial-gradient(circle at 12% 15%, #fff2b8 0, transparent 27%),
-    radial-gradient(circle at 85% 12%, #d7f8ef 0, transparent 27%),
-    radial-gradient(circle at 70% 85%, #e1dcff 0, transparent 30%),
-    linear-gradient(135deg,var(--bg1),var(--bg2));
-}
-.wrap{max-width:1120px;margin:0 auto;}
-.hero{
-  background:rgba(255,255,255,.86); border:1px solid var(--line); border-radius:28px;
-  padding:38px 42px; box-shadow:0 18px 50px rgba(21,34,74,.13);
-  display:grid; grid-template-columns:1.35fr .65fr; gap:28px; align-items:center;
-}
-.badge{display:inline-block;background:#e8efff;color:var(--blue);padding:8px 16px;border-radius:999px;font-size:16px;margin-bottom:16px;}
-h1{font-size:50px;line-height:1.05;color:var(--navy);letter-spacing:-1px;margin-bottom:14px;}
-.subtitle{font-size:23px;color:#34405e;line-height:1.55;}
-.hero-card{
-  background:linear-gradient(160deg,#15224a,#2f6bed); color:#fff; border-radius:24px; padding:28px;
-  min-height:220px; display:flex; flex-direction:column; justify-content:space-between;
-  box-shadow:0 14px 32px rgba(47,107,237,.28);
-}
-.hero-card .big{font-size:56px;line-height:1;}
-.hero-card p{font-size:20px;line-height:1.5;}
-.section-title{font-size:28px;margin:32px 4px 16px;color:var(--navy);}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.card{
-  background:var(--card); border:1px solid var(--line); border-radius:22px; padding:24px;
-  min-height:210px; display:flex; flex-direction:column; gap:12px; text-decoration:none; color:inherit;
-  box-shadow:0 10px 24px rgba(21,34,74,.08); transition:.16s transform,.16s box-shadow,.16s border-color;
-}
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(21,34,74,.14);border-color:#b8c9ef;}
-.step{font-size:15px;color:#fff;border-radius:999px;padding:7px 13px;width:max-content;}
-.icon{font-size:38px;margin-top:2px;}
-.card h2{font-size:25px;color:var(--navy);line-height:1.25;}
-.card p{font-size:18px;line-height:1.45;color:#4c5875;word-break:keep-all;}
-.card .go{margin-top:auto;font-size:17px;color:var(--blue);}
-.s1 .step{background:var(--blue);} .s2 .step{background:var(--mint);} .s3 .step{background:var(--pink);}
-.s4 .step{background:var(--purple);} .s5 .step{background:#ff9f30;} .s6 .step{background:#56617d;}
-.notice{
-  margin-top:24px;background:#fff;border:1px dashed #b8c9ef;border-radius:20px;padding:20px 24px;
-  display:flex;gap:14px;align-items:flex-start;color:#40506e;font-size:18px;line-height:1.55;
-}
-.notice strong{color:var(--navy);}
-.footer{text-align:center;margin-top:24px;color:var(--muted);font-size:15px;}
-@media(max-width:900px){.hero{grid-template-columns:1fr;} .grid{grid-template-columns:1fr 1fr;} h1{font-size:40px;}}
-@media(max-width:620px){body{padding:16px 10px 36px}.hero{padding:28px 22px;border-radius:20px}.grid{grid-template-columns:1fr}h1{font-size:33px}.subtitle{font-size:19px}.card{min-height:0}.hero-card{min-height:170px}.hero-card .big{font-size:44px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI와 함께 떠나는 진로탐험</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#eef5ff;
+      --bg2:#f8f2ff;
+      --navy:#172452;
+      --blue:#2e6ff2;
+      --sky:#5dc2ff;
+      --mint:#58d7b0;
+      --green:#7ad96b;
+      --yellow:#ffd76d;
+      --pink:#ff8ab3;
+      --purple:#9a7bff;
+      --orange:#ffae63;
+      --ink:#1b284e;
+      --muted:#6e7c9c;
+      --card:#ffffffcc;
+      --line:#dce6fb;
+      --shadow:0 24px 60px rgba(29, 60, 134, .16);
+      --soft-shadow:0 14px 32px rgba(32, 53, 111, .12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      min-height:100vh;
+      font-family:'Noto Sans KR', sans-serif;
+      color:var(--ink);
+      overflow-x:hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(93,194,255,.35), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(154,123,255,.26), transparent 25%),
+        radial-gradient(circle at 75% 86%, rgba(88,215,176,.22), transparent 22%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+    }
+    body:before{
+      content:"";
+      position:fixed;inset:0;
+      background-image:
+        linear-gradient(rgba(46,111,242,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46,111,242,.055) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.2));
+      pointer-events:none;
+    }
+    .wrap{
+      width:min(1220px, calc(100% - 34px));
+      min-height:100vh;
+      margin:0 auto;
+      padding:28px 0 36px;
+      display:flex;
+      align-items:center;
+    }
+    .stage{
+      position:relative;
+      width:100%;
+      min-height:720px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(255,255,255,.82);
+      box-shadow:var(--shadow);
+      border-radius:34px;
+      overflow:hidden;
+      backdrop-filter:blur(16px);
+    }
+    .stage:before{
+      content:"";position:absolute;inset:-80px auto auto -80px;width:260px;height:260px;
+      background:linear-gradient(135deg, rgba(93,194,255,.5), rgba(46,111,242,.15));
+      border-radius:50%;filter:blur(2px);
+    }
+    .stage:after{
+      content:"";position:absolute;right:-90px;bottom:-90px;width:310px;height:310px;
+      background:linear-gradient(135deg, rgba(255,138,179,.25), rgba(154,123,255,.32));
+      border-radius:50%;filter:blur(1px);
+    }
+    .hero{
+      position:relative;z-index:2;
+      display:grid;
+      grid-template-columns: .86fr 1.14fr;
+      gap:24px;
+      padding:38px 44px 36px;
+      height:100%;
+    }
+    .left{
+      display:flex;flex-direction:column;justify-content:space-between;
+      min-height:640px;
+      padding:8px 4px 6px;
+    }
+    .brand{
+      display:inline-flex;align-items:center;gap:10px;
+      width:max-content;
+      border:1px solid rgba(46,111,242,.17);
+      background:rgba(255,255,255,.72);
+      color:var(--blue);
+      border-radius:999px;
+      padding:9px 15px;
+      font-weight:800;
+      box-shadow:0 8px 18px rgba(46,111,242,.09);
+      font-size:14px;
+    }
+    h1{
+      margin-top:24px;
+      font-family:'Jua','Noto Sans KR',sans-serif;
+      color:var(--navy);
+      font-weight:400;
+      letter-spacing:-.8px;
+      line-height:1.05;
+      font-size:clamp(42px, 4.4vw, 68px);
+      word-break:keep-all;
+    }
+    .subtitle{
+      margin-top:22px;
+      max-width:500px;
+      color:#445274;
+      font-size:clamp(18px, 1.55vw, 23px);
+      font-weight:700;
+      line-height:1.55;
+      word-break:keep-all;
+    }
+    .start-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;align-items:center;}
+    .start-btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      padding:15px 21px;
+      border-radius:18px;
+      color:#fff;text-decoration:none;font-weight:900;
+      background:linear-gradient(135deg, var(--blue), #7a63ff);
+      box-shadow:0 16px 28px rgba(46,111,242,.24);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .start-btn:hover{transform:translateY(-3px);box-shadow:0 22px 36px rgba(46,111,242,.31);}
+    .small-note{color:var(--muted);font-size:14px;font-weight:700;}
+    .mascot-area{
+      position:relative;
+      margin-top:30px;
+      min-height:245px;
+      display:flex;align-items:flex-end;justify-content:center;
+    }
+    .orbit{
+      position:absolute;width:330px;height:178px;border:2px dashed rgba(46,111,242,.2);border-radius:50%;bottom:22px;transform:rotate(-13deg);
+    }
+    .spark{position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 24px rgba(46,111,242,.24);}
+    .s1{width:11px;height:11px;left:55px;bottom:140px}.s2{width:8px;height:8px;right:76px;bottom:191px}.s3{width:14px;height:14px;right:28px;bottom:85px}
+    .robot{
+      position:relative;width:214px;height:218px;
+      animation:float 4.6s ease-in-out infinite;
+    }
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .bot-head{
+      position:absolute;left:35px;top:30px;width:144px;height:112px;
+      background:linear-gradient(145deg,#fff,#e8f1ff);
+      border:4px solid #243563;border-radius:34px;
+      box-shadow:0 18px 34px rgba(32,53,111,.18);
+    }
+    .bot-head:before,.bot-head:after{
+      content:"";position:absolute;top:41px;width:20px;height:20px;border-radius:50%;background:#253662;
+      box-shadow:0 0 0 7px rgba(93,194,255,.2);
+    }
+    .bot-head:before{left:32px}.bot-head:after{right:32px}
+    .smile{position:absolute;left:54px;top:71px;width:37px;height:15px;border-bottom:5px solid #253662;border-radius:0 0 30px 30px;}
+    .antenna{position:absolute;left:103px;top:6px;width:8px;height:31px;background:#243563;border-radius:5px;}
+    .antenna:before{content:"";position:absolute;left:-8px;top:-16px;width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#ffd76d,#ff8ab3);}
+    .body{
+      position:absolute;left:58px;top:135px;width:100px;height:70px;border-radius:28px 28px 34px 34px;
+      background:linear-gradient(135deg,#2e6ff2,#7a63ff);box-shadow:0 16px 28px rgba(46,111,242,.22);
+    }
+    .body:before{content:"";position:absolute;left:27px;top:18px;width:46px;height:14px;border-radius:99px;background:rgba(255,255,255,.75);}
+    .arm{position:absolute;top:148px;width:49px;height:17px;background:#243563;border-radius:99px;}
+    .arm.left{left:18px;transform:rotate(-22deg)}.arm.right{right:18px;transform:rotate(22deg)}
+    .compass{
+      position:absolute;right:20px;top:158px;width:58px;height:58px;border-radius:50%;background:#fff;border:4px solid #243563;box-shadow:0 8px 18px rgba(32,53,111,.18);
+    }
+    .compass:before{content:"";position:absolute;left:22px;top:7px;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:22px solid #ff6e8f;transform:rotate(28deg);transform-origin:50% 100%;}
+    .compass:after{content:"";position:absolute;left:22px;bottom:7px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:22px solid #5dc2ff;transform:rotate(28deg);transform-origin:50% 0;}
+    .route-panel{
+      position:relative;z-index:2;
+      min-height:640px;
+      padding:10px 0 0;
+    }
+    .route-title{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;
+    }
+    .route-title h2{
+      font-size:20px;color:var(--navy);font-weight:900;letter-spacing:-.4px;
+    }
+    .route-title span{
+      font-size:13px;color:var(--muted);font-weight:800;background:rgba(255,255,255,.68);border:1px solid var(--line);padding:8px 12px;border-radius:999px;
+    }
+    .path{
+      position:relative;
+      min-height:590px;
+    }
+    .path:before{
+      content:"";
+      position:absolute;
+      left:112px;top:55px;width:475px;height:468px;
+      border:3px dashed rgba(46,111,242,.22);
+      border-left:none;border-bottom:none;
+      border-radius:0 280px 0 0;
+      transform:skewY(-3deg);
+      pointer-events:none;
+    }
+    .step-card{
+      --accent:var(--blue);
+      position:absolute;
+      width:292px;
+      min-height:112px;
+      text-decoration:none;color:var(--ink);
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.96);
+      border-left:8px solid var(--accent);
+      border-radius:24px;
+      padding:18px 18px 16px 18px;
+      box-shadow:var(--soft-shadow);
+      backdrop-filter:blur(14px);
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, z-index 0s;
+      z-index:1;
+    }
+    .step-card:hover, .step-card:focus-visible{
+      transform:translateY(-8px) scale(1.035);
+      box-shadow:0 34px 64px rgba(32,53,111,.26);
+      border-color:rgba(46,111,242,.34);
+      z-index:30;
+    }
+    .step-card.spotlight{
+      transform:translateY(-12px) scale(1.06);
+      box-shadow:0 42px 82px rgba(46,111,242,.36);
+      border-color:rgba(46,111,242,.55);
+      z-index:60;
+      animation:spotlightPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes spotlightPulse{
+      0%,100%{filter:brightness(1);}
+      50%{filter:brightness(1.06);}
+    }
+    .start-btn.is-active{
+      background:linear-gradient(135deg,#1f56d9,#58d7b0);
+      box-shadow:0 18px 34px rgba(46,111,242,.32);
+    }
+    .step-card.disabled{opacity:.72;cursor:not-allowed;filter:grayscale(.12);}
+    .step-card.disabled:hover{transform:none;box-shadow:var(--soft-shadow);z-index:1;}
+    .topline{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;}
+    .step-badge{
+      display:inline-flex;align-items:center;gap:7px;
+      font-size:12px;font-weight:900;color:var(--accent);
+      background:color-mix(in srgb, var(--accent) 12%, white);
+      border-radius:999px;padding:6px 10px;
+    }
+    .emoji{font-size:26px;line-height:1;filter:drop-shadow(0 4px 7px rgba(32,53,111,.12));}
+    .step-card h3{font-size:20px;font-weight:900;letter-spacing:-.45px;margin-bottom:7px;color:var(--navy);}
+    .goal{font-size:13.5px;line-height:1.38;color:#53617f;font-weight:700;word-break:keep-all;}
+    .result{
+      margin-top:10px;display:inline-flex;align-items:center;gap:6px;
+      font-size:12.5px;font-weight:900;color:#324160;background:#f3f6ff;border:1px solid #e3eaff;border-radius:10px;padding:6px 9px;
+    }
+    .arrow{font-weight:900;color:var(--accent);opacity:.8;}
+    .c1{--accent:#2e6ff2;left:0;top:0;}
+    .c2{--accent:#58bf8f;left:72px;top:80px;}
+    .c3{--accent:#9a7bff;left:151px;top:160px;}
+    .c4{--accent:#ff8ab3;left:231px;top:240px;}
+    .c5{--accent:#ffae3f;left:312px;top:320px;}
+    .c6{--accent:#30b7dc;left:392px;top:400px;}
+    .c7{--accent:#ffd15c;left:198px;top:490px;width:352px;min-height:96px;}
+    .footer-note{
+      position:absolute;left:44px;bottom:25px;right:44px;z-index:3;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      color:#7a86a3;font-size:13px;font-weight:700;
+    }
+    .footer-note strong{color:var(--navy)}
+    .pill{background:rgba(255,255,255,.66);border:1px solid var(--line);padding:8px 12px;border-radius:999px;}
+
+    @media (max-width:1100px){
+      .wrap{align-items:flex-start;padding-top:18px;}
+      .stage{min-height:auto;}
+      .hero{grid-template-columns:1fr;padding:30px 28px 76px;}
+      .left{min-height:auto;}
+      .mascot-area{min-height:180px;margin-top:12px;}
+      .robot{transform:scale(.82);animation:none;}
+      .route-panel{min-height:0;}
+      .path{min-height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+      .path:before{display:none;}
+      .step-card{position:relative;left:auto!important;top:auto!important;width:auto;min-height:136px;}
+      .c7{grid-column:1 / -1;}
+    }
+    @media (max-width:680px){
+      .wrap{width:min(100% - 18px, 1220px);padding:9px 0 20px;}
+      .stage{border-radius:24px;}
+      .hero{padding:23px 18px 86px;}
+      h1{font-size:42px;}
+      .subtitle{font-size:17px;}
+      .path{grid-template-columns:1fr;}
+      .step-card{min-height:0;}
+      .brand{font-size:13px;}
+      .route-title{align-items:flex-start;flex-direction:column;}
+      .footer-note{left:20px;right:20px;bottom:18px;}
+    }
+  </style>
 </head>
 <body>
-<main class="wrap">
-  <section class="hero">
-    <div>
-      <span class="badge">중3 진로 · AI 리터러시 프로젝트</span>
-      <h1>AI와 함께 떠나는<br>진로탐험</h1>
-      <p class="subtitle">좋은 질문이 좋은 답을 만들고,<br>좋은 답은 나의 가능성을 더 선명하게 보여줍니다.</p>
-    </div>
-    <div class="hero-card">
-      <div class="big">🤖✨</div>
-      <p>AI에게 나를 잘 설명하고,<br>강점과 미래를 함께 설계해 봅시다.</p>
-    </div>
-  </section>
+  <main class="wrap">
+    <section class="stage">
+      <div class="hero">
+        <section class="left">
+          <div>
+            <div class="brand">🧭 AI Career Expedition</div>
+            <h1>AI와 함께<br>떠나는 진로탐험</h1>
+            <p class="subtitle">좋은 질문이 좋은 답을 만들고,<br>좋은 답은 나의 가능성을 더 선명하게 보여줍니다.</p>
+            <div class="start-row">
+              <a class="start-btn" id="startExplore" href="#step1-card" aria-controls="step1-card">탐험 시작하기 <span>→</span></a>
+              <span class="small-note">각 단계의 결과물을 패들렛에 전시합니다.</span>
+            </div>
+          </div>
 
-  <h2 class="section-title">오늘의 탐험 코스</h2>
-  <section class="grid">
-    <a class="card s1" href="strength.html">
-      <span class="step">1단계</span>
-      <div class="icon">💬</div>
-      <h2>AI와 잘 대화하기</h2>
-      <p>나의 정보를 바탕으로 강점 분석 프롬프트를 만들고 복사해 봅니다.</p>
-      <span class="go">활동 시작하기 →</span>
-    </a>
+          <div class="mascot-area" aria-hidden="true">
+            <div class="orbit"></div>
+            <span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span>
+            <div class="robot">
+              <div class="antenna"></div>
+              <div class="bot-head"><div class="smile"></div></div>
+              <div class="arm left"></div><div class="arm right"></div>
+              <div class="body"></div>
+              <div class="compass"></div>
+            </div>
+          </div>
+        </section>
 
-    <a class="card s2" href="#" onclick="alert('곧 추가될 활동입니다.'); return false;">
-      <span class="step">2단계</span>
-      <div class="icon">🌟</div>
-      <h2>AI가 발견한 나</h2>
-      <p>AI가 찾아준 강점과 프로필 이름을 바탕으로 나를 새롭게 이해합니다.</p>
-      <span class="go">준비 중 →</span>
-    </a>
+        <section class="route-panel">
+          <div class="route-title">
+            <h2>오늘의 탐험 코스</h2>
+            <span>STEP 1 → STEP 7</span>
+          </div>
+          <nav class="path" aria-label="AI 진로탐험 단계">
+            <a class="step-card c1" id="step1-card" href="step1.html">
+              <div class="topline"><span class="step-badge">STEP 1</span><span class="emoji">💬</span></div>
+              <h3>AI와 잘 대화하기</h3>
+              <p class="goal">AI와 효과적으로 대화하는 방법을 익혀 봅니다.</p>
+              <span class="result">결과물 · AI 프롬프트 활동지 <span class="arrow">›</span></span>
+            </a>
+            <a class="step-card c2" href="step2.html">
+              <div class="topline"><span class="step-badge">STEP 2</span><span class="emoji">🌱</span></div>
+              <h3>AI가 발견한 나</h3>
+              <p class="goal">AI와 함께 나의 강점과 가능성을 발견해 봅니다.</p>
+              <span class="result">결과물 · 강점 분석 결과지 <span class="arrow">›</span></span>
+            </a>
+            <a class="step-card c3" href="step3.html">
+              <div class="topline"><span class="step-badge">STEP 3</span><span class="emoji">🎨</span></div>
+              <h3>나만의 AI 아바타</h3>
+              <p class="goal">나를 상징하는 AI 아바타 이미지를 준비합니다.</p>
+              <span class="result">결과물 · AI 아바타 <span class="arrow">›</span></span>
+            </a>
+            <a class="step-card c4" href="step4.html">
+              <div class="topline"><span class="step-badge">STEP 4</span><span class="emoji">🪪</span></div>
+              <h3>AI 프로필 카드</h3>
+              <p class="goal">현재의 나를 한 장의 프로필 카드로 표현합니다.</p>
+              <span class="result">결과물 · 프로필 카드 <span class="arrow">›</span></span>
+            </a>
+            <a class="step-card c5" href="step5.html">
+              <div class="topline"><span class="step-badge">STEP 5</span><span class="emoji">🚀</span></div>
+              <h3>미래 비전보드</h3>
+              <p class="goal">내가 꿈꾸는 미래를 구체적인 이미지로 그려 봅니다.</p>
+              <span class="result">결과물 · 비전보드 <span class="arrow">›</span></span>
+            </a>
+            <a class="step-card c6" href="step6.html">
+              <div class="topline"><span class="step-badge">STEP 6</span><span class="emoji">🎬</span></div>
+              <h3>미래의 나</h3>
+              <p class="goal">미래의 나를 짧은 영상으로 생생하게 만나 봅니다.</p>
+              <span class="result">결과물 · AI 영상 <span class="arrow">›</span></span>
+            </a>
+            <a class="step-card c7" href="#">
+              <div class="topline"><span class="step-badge">GOAL</span><span class="emoji">🏆</span></div>
+              <h3>패들렛 전시회</h3>
+              <p class="goal">서로의 결과물을 감상하고 응원의 메시지를 남깁니다.</p>
+              <span class="result">결과물 · 온라인 전시 <span class="arrow">›</span></span>
+            </a>
+          </nav>
+        </section>
+      </div>
+      <div class="footer-note">
+        <span class="pill"><strong>수업 안내</strong> · 활동지는 열고, 결과물은 저장해서 패들렛에 올립니다.</span>
+        <span>AI 진로탐험 프로젝트</span>
+      </div>
+    </section>
+  </main>
+<script>
+  const startBtn = document.getElementById('startExplore');
+  const firstCard = document.getElementById('step1-card');
 
-    <a class="card s3" href="#" onclick="alert('곧 추가될 활동입니다.'); return false;">
-      <span class="step">3단계</span>
-      <div class="icon">🧩</div>
-      <h2>나의 프로필 카드</h2>
-      <p>강점, 가치관, 관심 분야, 미래 키워드를 한 장의 카드로 정리합니다.</p>
-      <span class="go">준비 중 →</span>
-    </a>
+  if (startBtn && firstCard) {
+    startBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelectorAll('.step-card.spotlight').forEach(card => card.classList.remove('spotlight'));
+      firstCard.classList.add('spotlight');
+      startBtn.classList.add('is-active');
+      firstCard.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+      firstCard.focus({ preventScroll: true });
+    });
+  }
+</script>
 
-    <a class="card s4" href="#" onclick="alert('곧 추가될 활동입니다.'); return false;">
-      <span class="step">4단계</span>
-      <div class="icon">🚀</div>
-      <h2>미래 비전보드</h2>
-      <p>미래의 나, 목표, 실천 계획을 시각적으로 표현합니다.</p>
-      <span class="go">준비 중 →</span>
-    </a>
-
-    <a class="card s5" href="#" onclick="alert('곧 추가될 활동입니다.'); return false;">
-      <span class="step">선택</span>
-      <div class="icon">🎬</div>
-      <h2>미래의 나 영상</h2>
-      <p>시간이 남으면 미래의 나를 5초 영상으로 표현해 봅니다.</p>
-      <span class="go">준비 중 →</span>
-    </a>
-
-    <a class="card s6" href="#" onclick="alert('패들렛 게시판에 결과물을 올려 주세요.'); return false;">
-      <span class="step">전시</span>
-      <div class="icon">🏆</div>
-      <h2>패들렛 전시회</h2>
-      <p>완성한 결과물을 올리고 친구들의 작품에 응원 댓글을 남깁니다.</p>
-      <span class="go">패들렛으로 돌아가기 →</span>
-    </a>
-  </section>
-
-  <div class="notice">
-    <div>💡</div>
-    <div><strong>사용 방법</strong><br>각 활동을 열어 입력칸을 채운 뒤, 복사 버튼을 눌러 ChatGPT 또는 Gemini에 붙여넣으세요. AI의 답은 그대로 믿기보다 나에게 맞는지 확인하고 수정해 봅니다.</div>
-  </div>
-
-  <p class="footer">AI-Career Project · 좋은 질문이 좋은 미래를 만든다</p>
-</main>
 </body>
 </html>
