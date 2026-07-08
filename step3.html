@@ -3,92 +3,61 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>STEP3 나만의 AI 아바타</title>
+<title>STEP3 나를 닮은 AI 캐릭터</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#16244d; --blue:#2867e7; --sky:#eaf3ff; --cyan:#34a6ff; --mint:#dff9f3;
-  --ink:#1f2a44; --muted:#7583a4; --line:#dde7f7; --card:#ffffff; --cream:#fff9e8;
-  --purple:#7357ff; --green:#1fa87a; --pink:#ff6f91; --yellow:#ffd166; --soft:#f7faff;
+  --navy:#16244d;--blue:#2867e7;--sky:#eaf3ff;--line:#dce7f7;--ink:#1e2a45;--muted:#73819f;
+  --card:#fff;--soft:#f7fbff;--mint:#dbf7ee;--yellow:#fff3c6;--pink:#ffe8ef;--purple:#eee9ff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans KR',sans-serif;background:radial-gradient(circle at 8% 0%,#eff8ff 0,#f8fbff 38%,#edf3ff 100%);color:var(--ink);padding:22px;min-height:100vh;}
-.wrapper{max-width:1280px;margin:0 auto;}
-.hero{background:linear-gradient(135deg,#13204a,#245fe7 58%,#6cc8ff);border-radius:28px;color:white;padding:28px 34px;box-shadow:0 22px 50px rgba(22,36,77,.22);display:flex;justify-content:space-between;gap:22px;align-items:center;position:relative;overflow:hidden;}
-.hero:before{content:"";position:absolute;right:-90px;top:-120px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.14)}
-.hero:after{content:"";position:absolute;left:38%;bottom:-70px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
-.hero h1{font-family:'Jua',sans-serif;font-size:42px;font-weight:400;letter-spacing:-.5px;margin-bottom:8px;position:relative;z-index:1}
-.hero p{font-size:17px;line-height:1.65;opacity:.95;position:relative;z-index:1}
-.badge{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 15px;font-weight:900;margin-bottom:12px;position:relative;z-index:1}
-.home{position:relative;z-index:1;color:white;text-decoration:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:12px 17px;border-radius:14px;font-weight:900;white-space:nowrap}.home:hover{background:rgba(255,255,255,.25)}
-.notice{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 18px;color:#425174;box-shadow:0 10px 28px rgba(27,53,105,.08);display:flex;gap:10px;align-items:flex-start;line-height:1.55;font-size:14px}.notice b{color:var(--navy)}
-.main{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-top:22px;align-items:start}.panel{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 16px 45px rgba(27,53,105,.11)}
-.panel-title{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-title h2{font-family:'Jua',sans-serif;color:var(--navy);font-weight:400;font-size:28px}.hint{color:var(--muted);font-size:14px;line-height:1.5}.meta{display:grid;grid-template-columns:1.5fr .9fr 1fr;gap:10px;margin-bottom:16px}.field label{display:block;font-size:13px;color:var(--muted);font-weight:900;margin:0 0 6px 4px}.field input,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;background:white;padding:12px 14px;font-family:inherit;font-size:15px;outline:none;transition:.15s}.field textarea{min-height:118px;resize:vertical;line-height:1.6}.field input:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(40,103,231,.09)}
-.section{margin-top:16px;padding-top:16px;border-top:1px dashed #d7e2f5}.section h3{font-family:'Jua',sans-serif;font-size:22px;color:var(--navy);font-weight:400;margin-bottom:10px}.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.choice-grid.two{grid-template-columns:repeat(2,1fr)}.choice-grid.face{grid-template-columns:repeat(5,1fr)}.choice-grid.hair{grid-template-columns:repeat(3,1fr)}
-.option{border:1.5px solid var(--line);background:#fff;border-radius:16px;padding:11px 10px;min-height:49px;display:flex;align-items:center;justify-content:center;text-align:center;gap:7px;cursor:pointer;font-weight:900;color:#314063;transition:.16s;user-select:none;position:relative}.option:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(40,103,231,.12)}.option.active{background:linear-gradient(135deg,#eaf3ff,#f5fbff);border-color:var(--blue);box-shadow:0 8px 24px rgba(40,103,231,.18);color:var(--navy)}.option .ico{font-size:20px}.option .small{font-size:12px;color:var(--muted);font-weight:800}.mini-field{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}.tag-suggest{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}.tag-suggest button{border:1px solid #d2e2ff;background:#f4f8ff;color:#245fe7;border-radius:999px;padding:6px 10px;font-family:inherit;font-weight:900;cursor:pointer}.tag-suggest button:hover{background:#eaf3ff}
-.progress-info{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-weight:900;color:var(--navy)}.progress-info span:last-child{font-size:13px;color:var(--muted)}.progress-wrap{background:#edf3ff;border-radius:999px;height:16px;overflow:hidden;border:1px solid #dbe7fb}.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#34a6ff,#7357ff);transition:.25s;border-radius:999px}.ready{display:none;margin-top:13px;background:#eafbf6;border:1px solid #bdebdc;color:#13684f;border-radius:15px;padding:12px 14px;font-weight:900}.ready.show{display:block}
-.preview-card{background:linear-gradient(180deg,#ffffff,#f6faff);border:1px solid var(--line);border-radius:24px;padding:20px;position:sticky;top:18px;box-shadow:0 18px 44px rgba(27,53,105,.12)}.avatar-orb{height:150px;border-radius:28px;background:radial-gradient(circle at 35% 25%,#fff 0,#e6f5ff 28%,#b8dcff 56%,#7f9cff 100%);display:flex;align-items:center;justify-content:center;margin-bottom:14px;position:relative;overflow:hidden}.avatar-orb:before{content:"";position:absolute;width:270px;height:270px;border:3px dashed rgba(255,255,255,.55);border-radius:50%;}.avatar-face{font-size:70px;filter:drop-shadow(0 15px 16px rgba(27,53,105,.25));z-index:1}.build-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.build-item{background:#f3f7ff;border:1px solid #dfe9fb;border-radius:13px;padding:9px 10px;font-size:13px;color:#40506f}.build-item.done{background:#eafbf6;border-color:#c4efe1;color:#146b51;font-weight:900}.prompt-box{background:#13204a;color:#f4f8ff;border-radius:18px;padding:17px;line-height:1.7;font-size:14.5px;white-space:pre-wrap;max-height:272px;overflow:auto;border:1px solid rgba(255,255,255,.08)}.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.btn{border:none;border-radius:15px;padding:14px 15px;font-family:inherit;font-size:16px;font-weight:900;cursor:pointer;transition:.14s;display:flex;align-items:center;justify-content:center;gap:8px}.btn.primary{background:var(--navy);color:white}.btn.primary:hover{background:#22366d}.btn.secondary{background:#edf3ff;color:var(--navy);border:1px solid #d7e4fb}.btn.secondary:hover{background:#e2ecff}.btn.full{grid-column:1/-1}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,36,77,.14)}.btn.done{background:#17a977;color:white}.copy-note{font-size:13px;color:var(--muted);line-height:1.5;margin-top:9px}.avatar-zone{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}.avatar-zone h3{font-family:'Jua',sans-serif;font-size:22px;color:var(--navy);font-weight:400;margin-bottom:8px}.dropzone{border:2px dashed #b9c9e8;border-radius:18px;min-height:270px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);background:#f8fbff;position:relative;overflow:hidden;padding:14px}.dropzone.drag{background:#eef7ff;border-color:var(--blue)}.dropzone img{max-width:100%;max-height:250px;border-radius:16px;display:none;object-fit:contain}.dropzone.has-img img{display:block}.dropzone.has-img .dz-text{display:none}.mini-note{font-size:13px;color:var(--muted);line-height:1.55;margin-top:8px}.satisfaction{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.sat{background:#f6f9ff;border:1px solid #dfe8fb;border-radius:14px;padding:10px;text-align:center;font-weight:900;cursor:pointer}.sat.active{background:#fff7d8;border-color:#ffd166;color:#815b00}
-
-.nav-buttons{max-width:1280px;margin:22px auto 0;display:flex;justify-content:space-between;gap:16px;align-items:center}
-.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border-radius:16px;padding:14px 20px;font-weight:900;font-size:16px;transition:.15s;box-shadow:0 10px 24px rgba(22,36,77,.08)}
-.nav-btn.prev{background:white;color:var(--navy);border:1.5px solid var(--line)}
-.nav-btn.next{background:var(--navy);color:white;border:1.5px solid var(--navy)}
-.nav-btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(22,36,77,.14)}
-@media(max-width:560px){.nav-buttons{flex-direction:column}.nav-btn{width:100%}}
-.footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#13204a;color:white;border-radius:999px;padding:12px 18px;font-weight:900;box-shadow:0 14px 35px rgba(22,36,77,.25);display:none;z-index:999}.toast.show{display:block}
-@media(max-width:980px){.main{grid-template-columns:1fr}.preview-card{position:relative;top:0}.choice-grid,.choice-grid.two,.choice-grid.face,.choice-grid.hair{grid-template-columns:1fr 1fr}.meta{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.hero h1{font-size:34px}}@media(max-width:560px){body{padding:12px}.panel,.hero{border-radius:20px;padding:18px}.choice-grid,.choice-grid.two,.choice-grid.face,.choice-grid.hair{grid-template-columns:1fr}.btn-row,.satisfaction{grid-template-columns:1fr}.hero h1{font-size:30px}}
+body{font-family:'Noto Sans KR',sans-serif;background:radial-gradient(circle at 5% 0%,#eef9ff 0,#f8fbff 40%,#eef3ff 100%);color:var(--ink);min-height:100vh;padding:22px}.wrap{max-width:1280px;margin:0 auto}
+.hero{background:linear-gradient(135deg,#13204a,#2d65e9 60%,#75ceff);color:#fff;border-radius:28px;padding:28px 34px;display:flex;justify-content:space-between;gap:24px;align-items:center;box-shadow:0 22px 48px rgba(22,36,77,.22);position:relative;overflow:hidden}.hero:before{content:"";position:absolute;right:-80px;top:-110px;width:310px;height:310px;border-radius:50%;background:rgba(255,255,255,.14)}.hero h1{font-family:'Jua',sans-serif;font-size:42px;font-weight:400;letter-spacing:-.5px;margin:8px 0}.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 15px;font-weight:900}.hero p{line-height:1.65;font-size:17px;opacity:.96}.home{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.34);background:rgba(255,255,255,.15);border-radius:14px;padding:12px 17px;font-weight:900;white-space:nowrap}.home:hover{background:rgba(255,255,255,.25)}
+.notice{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 18px;box-shadow:0 10px 28px rgba(27,53,105,.08);display:flex;gap:10px;line-height:1.55;color:#425174;font-size:14px}.notice b{color:var(--navy)}
+.main{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-top:22px;align-items:start}.panel{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 16px 45px rgba(27,53,105,.11)}.panel-title{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;gap:12px}.panel-title h2{font-family:'Jua',sans-serif;font-size:29px;font-weight:400;color:var(--navy)}.hint{font-size:14px;color:var(--muted);line-height:1.5}.meta{display:grid;grid-template-columns:1.5fr .9fr 1fr;gap:10px;margin-bottom:16px}.field label{display:block;font-size:13px;color:#6c7a99;font-weight:900;margin:0 0 6px 4px}.field input{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;font-size:15px;outline:none;background:#fff}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(40,103,231,.08)}
+.section{margin-top:16px;padding-top:16px;border-top:1px dashed #d7e2f5}.section h3{font-family:'Jua',sans-serif;font-size:23px;color:var(--navy);font-weight:400;margin-bottom:9px}.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.choice-grid.two{grid-template-columns:repeat(2,1fr)}.choice-grid.four{grid-template-columns:repeat(4,1fr)}.choice-grid.hair{grid-template-columns:repeat(3,1fr)}.option{border:1.5px solid var(--line);background:#fff;border-radius:16px;min-height:50px;padding:10px;display:flex;align-items:center;justify-content:center;gap:7px;text-align:center;cursor:pointer;font-weight:900;color:#314063;transition:.16s;user-select:none}.option .ico{font-size:20px}.option:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(40,103,231,.12)}.option.active{background:linear-gradient(135deg,#eaf3ff,#f6fbff);border-color:var(--blue);box-shadow:0 8px 24px rgba(40,103,231,.18);color:var(--navy)}.mini-note{font-size:13px;color:var(--muted);line-height:1.55;margin-top:8px}
+.preview{position:sticky;top:18px;background:linear-gradient(180deg,#fff,#f6faff);border:1px solid var(--line);border-radius:26px;padding:20px;box-shadow:0 18px 44px rgba(27,53,105,.12)}.orb{height:148px;border-radius:28px;background:radial-gradient(circle at 35% 25%,#fff 0,#e5f5ff 30%,#b7dcff 58%,#849fff 100%);display:flex;align-items:center;justify-content:center;margin-bottom:14px;position:relative;overflow:hidden}.orb:before{content:"";position:absolute;width:270px;height:270px;border:3px dashed rgba(255,255,255,.55);border-radius:50%}.orb span{font-size:72px;filter:drop-shadow(0 15px 16px rgba(27,53,105,.25));z-index:1}.progress-info{display:flex;justify-content:space-between;align-items:center;font-weight:900;color:var(--navy);margin-bottom:8px}.progress-info span:last-child{font-size:13px;color:var(--muted)}.bar-wrap{background:#edf3ff;border-radius:999px;height:16px;overflow:hidden;border:1px solid #dbe7fb}.bar{height:100%;width:0;background:linear-gradient(90deg,#34a6ff,#7357ff);border-radius:999px;transition:.25s}.ready{display:none;margin:12px 0;background:#eafbf6;border:1px solid #bdebdc;color:#13684f;border-radius:15px;padding:12px 14px;font-weight:900}.ready.show{display:block}.build{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.build-item{background:#f3f7ff;border:1px solid #dfe9fb;border-radius:13px;padding:9px 10px;font-size:13px;color:#40506f}.build-item.done{background:#eafbf6;border-color:#c4efe1;color:#146b51;font-weight:900}.desc-title{font-family:'Jua',sans-serif;font-size:22px;color:var(--navy);margin:14px 0 8px}.desc-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;line-height:1.7;font-size:15px;color:#2f3e5d;min-height:125px;white-space:pre-wrap}.prompt-box{margin-top:12px;background:#13204a;color:#f4f8ff;border-radius:18px;padding:17px;line-height:1.7;font-size:14.5px;white-space:pre-wrap;max-height:265px;overflow:auto}.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.btn{border:none;border-radius:15px;padding:14px 15px;font:inherit;font-size:16px;font-weight:900;cursor:pointer;transition:.14s;display:flex;align-items:center;justify-content:center;gap:8px}.btn.primary{background:var(--navy);color:white}.btn.secondary{background:#edf3ff;color:var(--navy);border:1px solid #d7e4fb}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,36,77,.14)}.btn.done{background:#17a977;color:#fff}.copy-note{font-size:13px;color:var(--muted);line-height:1.55;margin-top:9px}.avatar-zone{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}.avatar-zone h3{font-family:'Jua',sans-serif;font-size:22px;color:var(--navy);font-weight:400;margin-bottom:8px}.dropzone{border:2px dashed #b9c9e8;border-radius:18px;min-height:260px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);background:#f8fbff;position:relative;overflow:hidden;padding:14px}.dropzone.drag{background:#eef7ff;border-color:var(--blue)}.dropzone img{max-width:100%;max-height:245px;border-radius:16px;display:none;object-fit:contain}.dropzone.has-img img{display:block}.dropzone.has-img .dz-text{display:none}.nav{display:flex;justify-content:space-between;margin:22px 0 14px}.nav a{text-decoration:none;border-radius:15px;padding:14px 18px;font-weight:900}.nav .prev{background:#fff;border:1px solid #d7e4fb;color:var(--navy)}.nav .next{background:var(--navy);color:#fff}.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:8px}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#13204a;color:white;border-radius:999px;padding:12px 18px;font-weight:900;box-shadow:0 14px 35px rgba(22,36,77,.25);display:none;z-index:999}.toast.show{display:block}
+@media(max-width:980px){.main{grid-template-columns:1fr}.preview{position:relative;top:0}.choice-grid,.choice-grid.two,.choice-grid.four,.choice-grid.hair{grid-template-columns:1fr 1fr}.meta{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.hero h1{font-size:34px}}@media(max-width:560px){body{padding:12px}.panel,.hero{border-radius:20px;padding:18px}.choice-grid,.choice-grid.two,.choice-grid.four,.choice-grid.hair{grid-template-columns:1fr}.btn-row{grid-template-columns:1fr}.hero h1{font-size:30px}}
 </style>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrap">
   <section class="hero">
     <div>
-      <div class="badge">🎨 STEP 3 · Avatar Maker</div>
-      <h1>나만의 AI 아바타</h1>
-      <p>강점과 관심 분야를 바탕으로 나를 상징하는 아바타 프롬프트를 완성해 봅시다.<br>실제 얼굴을 똑같이 만드는 것이 아니라, <b>나의 특징을 표현하는 캐릭터</b>를 만드는 활동입니다.</p>
+      <div class="badge">🎨 STEP 3 · Character Maker</div>
+      <h1>나를 닮은 AI 캐릭터</h1>
+      <p>거울이나 휴대폰 카메라를 보며 나와 가장 비슷한 모습을 골라 보세요.<br>사진을 그대로 복제하는 것이 아니라, <b>나의 특징을 담은 캐릭터</b>를 만드는 활동입니다.</p>
     </div>
     <a class="home" href="index.html">🏠 탐험 메인으로</a>
   </section>
-  <div class="notice"><span>🧭</span><div><b>활동 안내</b> · 선택 항목을 누르면 오른쪽 프롬프트가 실시간으로 완성됩니다. 이미지를 만들고 마음에 들지 않으면 선택을 바꾼 뒤 다시 생성해 보세요.</div></div>
+  <div class="notice"><span>💡</span><div><b>활동 안내</b> · 얼굴형은 빼고, 결과에 큰 영향을 주는 머리 모양·안경·복장·자세를 중심으로 선택합니다. 선택한 내용은 오른쪽에서 문장으로 바로 확인할 수 있습니다.</div></div>
 
   <main class="main">
     <section class="panel">
-      <div class="panel-title"><h2>아바타 설정하기</h2><span class="hint">체크하듯 고르면 프롬프트가 자동 완성됩니다.</span></div>
+      <div class="panel-title"><h2>내 모습 선택하기</h2><span class="hint">글로 설명하기 어렵다면, 가장 비슷한 카드를 고르세요.</span></div>
       <div class="meta">
-        <div class="field"><label>학교</label><input id="school" placeholder="예) ○○중학교"></div>
-        <div class="field"><label>학년</label><input id="grade" placeholder="예) 3학년"></div>
-        <div class="field"><label>이름</label><input id="name" placeholder="예) ○○○"></div>
+        <div class="field"><label>학교(학교명만 입력하세요.)</label><input id="school" placeholder="예) 강서"></div>
+        <div class="field"><label>학년(숫자만 입력하세요.)</label><input id="grade" placeholder="예) 3"></div>
+        <div class="field"><label>이름</label><input id="name" placeholder="예) 홍길동"></div>
       </div>
-      <div class="field"><label>STEP2 결과 붙여넣기</label><textarea id="step2" placeholder="STEP2에서 정리한 강점, 가치관, 관심 분야, 진로 분야 등을 붙여넣으세요.&#10;예) 강점: 책임감, 탐구심 / 관심 분야: 교육, 인공지능 / 진로 분야: 교육·상담, 정보기술"></textarea></div>
 
       <div class="section">
         <h3>👤 성별</h3>
-        <div class="choice-grid two" data-group="gender" data-type="single">
+        <div class="choice-grid two" data-group="gender">
           <div class="option" data-value="남학생"><span class="ico">👦</span>남학생</div>
           <div class="option" data-value="여학생"><span class="ico">👧</span>여학생</div>
         </div>
       </div>
 
       <div class="section">
-        <h3>😊 얼굴 형태</h3>
-        <div class="choice-grid face" data-group="face" data-type="single">
-          <div class="option" data-value="둥근형 얼굴"><span class="ico">😊</span>둥근형</div>
-          <div class="option" data-value="계란형 얼굴"><span class="ico">🙂</span>계란형</div>
-          <div class="option" data-value="각진형 얼굴"><span class="ico">😎</span>각진형</div>
-          <div class="option" data-value="하트형 얼굴"><span class="ico">🥰</span>하트형</div>
-          <div class="option" data-value="통통한 얼굴"><span class="ico">😄</span>통통한형</div>
-        </div>
-      </div>
-
-      <div class="section">
         <h3>💇 머리 모양</h3>
-        <div class="choice-grid hair" data-group="hair" data-type="single">
-          <div class="option" data-value="짧은 머리"><span class="ico">💇</span>짧은 머리</div>
+        <div class="choice-grid hair" data-group="hair">
+          <div class="option" data-value="짧은 검은 머리"><span class="ico">💇</span>짧은 머리</div>
           <div class="option" data-value="짧은 곱슬머리"><span class="ico">🌀</span>짧은 곱슬머리</div>
           <div class="option" data-value="단발머리"><span class="ico">💁</span>단발머리</div>
-          <div class="option" data-value="긴 머리"><span class="ico">💆</span>긴 머리</div>
+          <div class="option" data-value="긴 생머리"><span class="ico">💆</span>긴 머리</div>
           <div class="option" data-value="긴 웨이브 머리"><span class="ico">〰️</span>긴 웨이브 머리</div>
           <div class="option" data-value="묶은 머리"><span class="ico">🎀</span>묶은 머리</div>
         </div>
@@ -96,7 +65,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:radial-gradient(circle at 
 
       <div class="section">
         <h3>✂️ 앞머리</h3>
-        <div class="choice-grid two" data-group="bangs" data-type="single">
+        <div class="choice-grid two" data-group="bangs">
           <div class="option" data-value="앞머리가 있는"><span class="ico">✂️</span>앞머리 있음</div>
           <div class="option" data-value="앞머리가 없는"><span class="ico">✨</span>앞머리 없음</div>
         </div>
@@ -104,7 +73,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:radial-gradient(circle at 
 
       <div class="section">
         <h3>👓 안경</h3>
-        <div class="choice-grid two" data-group="glasses" data-type="single">
+        <div class="choice-grid two" data-group="glasses">
           <div class="option" data-value="안경을 착용한"><span class="ico">👓</span>안경 착용</div>
           <div class="option" data-value="안경을 착용하지 않은"><span class="ico">🙂</span>안경 없음</div>
         </div>
@@ -112,182 +81,132 @@ body{font-family:'Noto Sans KR',sans-serif;background:radial-gradient(circle at 
 
       <div class="section">
         <h3>😄 표정</h3>
-        <div class="choice-grid" data-group="expression" data-type="single">
-          <div class="option" data-value="환하게 웃는 표정"><span class="ico">😊</span>환하게 웃는</div>
-          <div class="option" data-value="차분한 미소"><span class="ico">🙂</span>차분한 미소</div>
+        <div class="choice-grid" data-group="expression">
+          <div class="option" data-value="살짝 미소 짓는 표정"><span class="ico">🙂</span>살짝 미소</div>
+          <div class="option" data-value="환하게 웃는 표정"><span class="ico">😁</span>활짝 웃음</div>
+          <div class="option" data-value="차분한 표정"><span class="ico">😌</span>차분한 표정</div>
           <div class="option" data-value="자신감 있는 표정"><span class="ico">😎</span>자신감 있는</div>
-          <div class="option" data-value="생각하는 표정"><span class="ico">🤔</span>생각하는</div>
-          <div class="option" data-value="활기찬 표정"><span class="ico">😄</span>활기찬</div>
-          <div class="option" data-value="따뜻한 표정"><span class="ico">☺️</span>따뜻한</div>
+          <div class="option" data-value="생각하는 표정"><span class="ico">🤔</span>생각하는 표정</div>
+          <div class="option" data-value="장난기 있는 표정"><span class="ico">😄</span>장난기 있는</div>
         </div>
+      </div>
+
+      <div class="section">
+        <h3>👕 옷차림</h3>
+        <div class="choice-grid four" data-group="outfit">
+          <div class="option" data-value="단정한 교복을 입고 있는"><span class="ico">🏫</span>교복</div>
+          <div class="option" data-value="후드티를 입고 있는"><span class="ico">🧥</span>후드티</div>
+          <div class="option" data-value="편한 티셔츠를 입고 있는"><span class="ico">👕</span>티셔츠</div>
+          <div class="option" data-value="운동복을 입고 있는"><span class="ico">🏃</span>운동복</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>🧍 자세</h3>
+        <div class="choice-grid" data-group="pose">
+          <div class="option" data-value="자연스럽게 서 있는"><span class="ico">🧍</span>서 있기</div>
+          <div class="option" data-value="의자에 앉아 있는"><span class="ico">🪑</span>앉아 있기</div>
+          <div class="option" data-value="휴대폰을 보고 있는"><span class="ico">📱</span>휴대폰 보기</div>
+          <div class="option" data-value="책을 들고 있는"><span class="ico">📚</span>책 들기</div>
+          <div class="option" data-value="노트북을 사용하고 있는"><span class="ico">💻</span>노트북 하기</div>
+          <div class="option" data-value="브이 포즈를 하고 있는"><span class="ico">✌️</span>브이 하기</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>🎒 같이 그리고 싶은 것</h3>
+        <div class="field"><input id="item" placeholder="예) 고양이, 강아지, 책, 노트북, 축구공, 기타, 카메라, 이어폰"></div>
+        <p class="mini-note">예시: 고양이, 강아지, 책, 노트북, 축구공, 농구공, 악기, 카메라, 이어폰, 게임기, 식물, 연필</p>
       </div>
 
       <div class="section">
         <h3>🎨 그림 스타일</h3>
-        <div class="choice-grid" data-group="style" data-type="single">
-          <div class="option" data-value="3D 캐릭터 스타일"><span class="ico">🧸</span>3D 캐릭터</div>
-          <div class="option" data-value="디지털 일러스트 스타일"><span class="ico">🎨</span>디지털 일러스트</div>
-          <div class="option" data-value="웹툰풍 스타일"><span class="ico">📖</span>웹툰풍</div>
-          <div class="option" data-value="수채화풍 스타일"><span class="ico">🖌️</span>수채화풍</div>
-          <div class="option" data-value="애니메이션풍 스타일"><span class="ico">🌟</span>애니메이션풍</div>
-          <div class="option" data-value="깔끔한 벡터 일러스트 스타일"><span class="ico">🔷</span>벡터 일러스트</div>
+        <div class="choice-grid four" data-group="style">
+          <div class="option" data-value="3D 캐릭터 일러스트 스타일"><span class="ico">🧸</span>3D 캐릭터</div>
+          <div class="option" data-value="깔끔한 디지털 일러스트 스타일"><span class="ico">🎨</span>디지털 일러스트</div>
+          <div class="option" data-value="웹툰풍 일러스트 스타일"><span class="ico">📖</span>웹툰풍</div>
+          <div class="option" data-value="애니메이션풍 일러스트 스타일"><span class="ico">🌟</span>애니메이션풍</div>
         </div>
-      </div>
-
-      <div class="section">
-        <h3>🎒 꼭 넣고 싶은 소품</h3>
-        <div class="field"><input id="item" placeholder="예) 책, 노트북, 카메라, 축구공, 악기, 태블릿"></div>
-        <p class="mini-note">예시: 책, 노트북, 카메라, 축구공, 악기, 태블릿, 반려동물, 실험도구, 그림도구, 마이크</p>
       </div>
     </section>
 
-    <aside class="preview-card">
-      <div class="avatar-orb"><div class="avatar-face" id="faceIcon">🧑‍🚀</div></div>
-      <div class="progress-info"><span>아바타 제작 준비</span><span id="progressText">0 / 8 완료</span></div>
-      <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
-      <div class="ready" id="readyBox">🎉 AI 아바타 제작 준비 완료! 프롬프트를 복사해 이미지 생성 AI에 붙여넣어 보세요.</div>
-      <div class="build-list" id="buildList"></div>
+    <aside class="preview">
+      <div class="orb"><span id="faceIcon">🧑‍🎨</span></div>
+      <div class="progress-info"><span>캐릭터 설명 완성도</span><span id="progressText">0 / 9 완료</span></div>
+      <div class="bar-wrap"><div class="bar" id="bar"></div></div>
+      <div class="ready" id="ready">🎉 캐릭터 설명이 완성되었습니다. 프롬프트를 복사해 AI에게 보내 보세요.</div>
+      <div class="build" id="build"></div>
+      <div class="desc-title">AI에게 보낼 설명</div>
+      <div class="desc-box" id="descBox"></div>
       <div class="prompt-box" id="promptBox"></div>
       <div class="btn-row">
         <button class="btn primary" id="copyBtn">📋 프롬프트 복사</button>
         <button class="btn secondary" id="regenBtn">🔄 다시 생성하기</button>
       </div>
-      <p class="copy-note">※ 다시 생성하기는 현재 선택한 내용을 바탕으로 새로운 느낌의 이미지를 만들 수 있도록 프롬프트에 변화를 더합니다.</p>
+      <p class="copy-note">※ 다시 생성하기는 같은 선택을 유지하되 구도와 분위기를 다르게 요청하는 문장을 추가합니다.</p>
       <div class="avatar-zone">
-        <h3>🖼 생성한 AI 아바타 붙여넣기</h3>
+        <h3>🖼 생성한 AI 캐릭터 붙여넣기</h3>
         <div class="dropzone" id="dropzone" tabindex="0">
-          <div class="dz-text">이미지를 복사한 뒤 이 영역을 클릭하고 <b>Ctrl+V</b>로 붙여넣거나,<br>이미지 파일을 끌어다 놓으세요.</div>
-          <img id="avatarImg" alt="생성한 AI 아바타">
+          <div class="dz-text">생성한 이미지를 복사한 뒤 이 영역을 클릭하고 <b>Ctrl+V</b>로 붙여넣거나,<br>이미지 파일을 끌어다 놓으세요.</div>
+          <img id="avatarImg" alt="생성한 AI 캐릭터">
         </div>
-        <p class="mini-note"><b>패들렛 제출 안내</b> · 생성한 아바타 이미지를 저장한 뒤 패들렛에도 올려 주세요. 이 이미지는 STEP4 ‘나의 정체성 포스터’에 사용합니다.</p>
+        <p class="mini-note"><b>패들렛 제출 안내</b> · 생성한 캐릭터 이미지를 저장한 뒤 패들렛에도 올려 주세요. 이 이미지는 STEP4 ‘나의 정체성 포스터’ 제작에 사용합니다.</p>
       </div>
     </aside>
   </main>
-
-  <div class="nav-buttons">
-    <a class="nav-btn prev" href="step2.html">← 이전 단계로</a>
-    <a class="nav-btn next" href="step4.html">다음 단계로 →</a>
-  </div>
-  <div class="footer">AI와 함께 떠나는 진로탐험 · STEP3 나만의 AI 아바타</div>
+  <div class="nav"><a class="prev" href="step2.html">← 이전 단계로</a><a class="next" href="step4.html">다음 단계로 →</a></div>
+  <div class="footer">AI와 함께 떠나는 진로탐험 · STEP3 나를 닮은 AI 캐릭터</div>
 </div>
 <div class="toast" id="toast">복사되었습니다.</div>
 <script>
-const groups = {};
-const requiredGroups = ['gender','face','hair','bangs','glasses','expression','style'];
-const buildLabels = {
-  gender:'성별', face:'얼굴형', hair:'머리', bangs:'앞머리', glasses:'안경', expression:'표정', style:'스타일', item:'소품'
-};
-const faceIcon = document.getElementById('faceIcon');
-const step2 = document.getElementById('step2');
-const itemInput = document.getElementById('item');
-const promptBox = document.getElementById('promptBox');
-const buildList = document.getElementById('buildList');
-const progressBar = document.getElementById('progressBar');
-const progressText = document.getElementById('progressText');
-const readyBox = document.getElementById('readyBox');
-const toast = document.getElementById('toast');
-let regenerateCount = 0;
-
+const groups={};
+const required=['gender','hair','bangs','glasses','expression','outfit','pose','style'];
+const labels={gender:'성별',hair:'머리',bangs:'앞머리',glasses:'안경',expression:'표정',outfit:'옷차림',pose:'자세',style:'스타일',item:'함께 그릴 것'};
+const item=document.getElementById('item'), descBox=document.getElementById('descBox'), promptBox=document.getElementById('promptBox'), build=document.getElementById('build'), bar=document.getElementById('bar'), progressText=document.getElementById('progressText'), ready=document.getElementById('ready'), faceIcon=document.getElementById('faceIcon'), toast=document.getElementById('toast');
+let regen=0;
 document.querySelectorAll('.choice-grid').forEach(grid=>{
-  const group = grid.dataset.group;
+  const group=grid.dataset.group;
   grid.querySelectorAll('.option').forEach(opt=>{
-    opt.addEventListener('click',()=>{
-      grid.querySelectorAll('.option').forEach(o=>o.classList.remove('active'));
-      opt.classList.add('active');
-      groups[group]=opt.dataset.value;
-      update();
-    });
+    opt.addEventListener('click',()=>{grid.querySelectorAll('.option').forEach(o=>o.classList.remove('active'));opt.classList.add('active');groups[group]=opt.dataset.value;update();});
   });
 });
-[step2,itemInput,document.getElementById('school'),document.getElementById('grade'),document.getElementById('name')].forEach(el=>el.addEventListener('input',update));
-
-function detectBackground(text){
-  const t = (text||'').toLowerCase();
-  const rules = [
-    [['교육','교사','학교','상담'], '미래형 교실과 따뜻한 학습 공간'],
-    [['인공지능','ai','컴퓨터','코딩','소프트웨어','정보기술','프로그래밍'], 'AI 연구소와 디지털 데이터가 흐르는 미래 공간'],
-    [['디자인','미술','예술','그림'], '창작 스튜디오와 전시 공간'],
-    [['영상','방송','콘텐츠','유튜브','미디어'], '영상 제작 스튜디오와 크리에이터 작업 공간'],
-    [['스포츠','운동','축구','농구','탁구','체육'], '밝은 경기장이나 역동적인 체육 공간'],
-    [['음악','악기','피아노','노래','공연'], '무대 조명과 음악 공연장'],
-    [['의료','보건','간호','병원','의사'], '깨끗한 병원과 의료 연구 공간'],
-    [['동물','수의','반려동물'], '동물병원 또는 자연과 어울린 공간'],
-    [['환경','생명','생태','숲','바다'], '푸른 숲과 생태공원'],
-    [['법','경찰','안전','행정'], '도시와 공공 안전을 상징하는 공간'],
-    [['건축','공학','기술','로봇'], '미래 도시와 공학 설계 공간'],
-    [['요리','제과','음식'], '깔끔한 주방과 푸드 스튜디오'],
-    [['여행','관광','문화'], '세계 지도를 배경으로 한 여행 감성 공간']
-  ];
-  for(const [keys,bg] of rules){ if(keys.some(k=>t.includes(k))) return bg; }
-  return '학생의 관심 분야를 상징하는 밝고 미래적인 배경';
+item.addEventListener('input',update);
+['school','grade','name'].forEach(id=>document.getElementById(id).addEventListener('input',update));
+function schoolText(){let v=document.getElementById('school').value.trim(); if(!v)return ''; return v.endsWith('중학교')?v:v+'중학교'}
+function gradeText(){let v=document.getElementById('grade').value.trim(); if(!v)return ''; return v.endsWith('학년')?v:v+'학년'}
+function characterDescription(){
+  const g=groups.gender||'[성별 선택]';
+  const hair=groups.hair||'[머리 모양 선택]';
+  const bangs=groups.bangs||'[앞머리 선택]';
+  const glasses=groups.glasses||'[안경 선택]';
+  const exp=groups.expression||'[표정 선택]';
+  const outfit=groups.outfit||'[옷차림 선택]';
+  const pose=groups.pose||'[자세 선택]';
+  const style=groups.style||'[그림 스타일 선택]';
+  const it=item.value.trim()||'학생이 좋아하는 물건이나 동물';
+  return `${hair}의 ${g}입니다.\n${bangs} 모습이고, ${glasses} 모습입니다.\n${outfit} 캐릭터이며, ${exp}으로 ${pose} 모습입니다.\n함께 그리고 싶은 것은 ${it}입니다.\n${style}로 자연스럽고 세련되게 표현합니다.`;
 }
-function summaryFromStep2(text){
-  const clean = (text||'').replace(/\s+/g,' ').trim();
-  return clean.length>140 ? clean.slice(0,140)+'…' : (clean || 'STEP2 결과가 아직 입력되지 않았습니다.');
-}
-function buildPrompt(extra=false){
-  const g = groups.gender || '[성별 선택]';
-  const face = groups.face || '[얼굴형 선택]';
-  const hair = groups.hair || '[머리 모양 선택]';
-  const bangs = groups.bangs || '[앞머리 선택]';
-  const glasses = groups.glasses || '[안경 선택]';
-  const expression = groups.expression || '[표정 선택]';
-  const style = groups.style || '[그림 스타일 선택]';
-  const item = itemInput.value.trim() || '학생의 강점과 관심 분야를 상징하는 소품';
-  const bg = detectBackground(step2.value);
-  const summary = summaryFromStep2(step2.value);
-  const variation = extra ? '\n- 같은 조건을 유지하되, 구도·색감·소품 배치를 이전과 다르게 새롭게 표현해 주세요.' : '';
-  return `다음 내용을 바탕으로 나를 상징하는 AI 아바타 이미지를 만들어 주세요.\n\n[STEP2 자기이해 결과 요약]\n${summary}\n\n[아바타 외형]\n- ${face}의 ${g}\n- ${bangs} ${hair}\n- ${glasses} 모습\n- ${expression}\n\n[스타일과 분위기]\n- ${style}\n- 실제 얼굴을 똑같이 재현하지 말고, 강점과 관심 분야를 상징하는 친근한 캐릭터로 표현해 주세요.\n- 밝고 긍정적이며 중학생 진로탐험 프로젝트에 어울리는 분위기\n\n[배경과 소품]\n- 배경: ${bg}\n- 소품: ${item}\n\n[요청사항]\n- 전신 또는 상반신 캐릭터로 표현\n- 프로필 포스터에 넣기 좋도록 깔끔한 구도\n- 과도하게 유치하지 않고, 중학교 3학년도 좋아할 만한 세련된 느낌\n- 글자는 넣지 말고 이미지로만 표현\n${variation}`;
+function prompt(extra=false){
+ const variation=extra?'\n- 같은 조건을 유지하되, 이전 이미지와 다른 구도·손동작·시선으로 새롭게 생성해 주세요.':'';
+ return `다음 설명을 바탕으로 중학생을 닮은 AI 캐릭터 이미지를 만들어 주세요.\n\n[캐릭터 설명]\n${characterDescription()}\n\n[중요한 조건]\n- 실제 인물 사진처럼 똑같이 복제하지 말고, 나와 비슷한 특징을 가진 친근한 캐릭터로 표현해 주세요.\n- 얼굴과 머리 모양, 안경, 옷차림, 자세가 잘 드러나게 해 주세요.\n- 정체성 포스터에 넣기 좋도록 캐릭터가 또렷하게 보이게 해 주세요.\n- 배경은 단순하고 깔끔하게 하거나 아주 연하게 처리해 주세요.\n- 글자는 넣지 말고 이미지로만 표현해 주세요.\n- 과도하게 유치하지 않고 중학생도 좋아할 만한 세련된 느낌으로 만들어 주세요.${variation}`;
 }
 function update(){
-  const completed = requiredGroups.filter(k=>groups[k]).length + (itemInput.value.trim()?1:0);
-  const total = requiredGroups.length + 1;
-  progressBar.style.width = Math.round(completed/total*100)+'%';
-  progressText.textContent = `${completed} / ${total} 완료`;
-  readyBox.classList.toggle('show', completed===total);
-  faceIcon.textContent = groups.gender==='여학생'?'👩‍🚀':(groups.gender==='남학생'?'👨‍🚀':'🧑‍🚀');
-  const values = {...groups, item:itemInput.value.trim()};
-  buildList.innerHTML = Object.keys(buildLabels).map(k=>{
-    const done = values[k];
-    return `<div class="build-item ${done?'done':''}">${done?'✓':'○'} ${buildLabels[k]}${done?`: ${values[k]}`:''}</div>`;
-  }).join('');
-  promptBox.textContent = buildPrompt(false);
+ const done=required.filter(k=>groups[k]).length+(item.value.trim()?1:0), total=required.length+1;
+ bar.style.width=Math.round(done/total*100)+'%'; progressText.textContent=`${done} / ${total} 완료`; ready.classList.toggle('show',done===total);
+ faceIcon.textContent=groups.gender==='여학생'?'👩‍🎨':(groups.gender==='남학생'?'👨‍🎨':'🧑‍🎨');
+ const vals={...groups,item:item.value.trim()};
+ build.innerHTML=Object.keys(labels).map(k=>`<div class="build-item ${vals[k]?'done':''}">${vals[k]?'✓':'○'} ${labels[k]}${vals[k]?`: ${vals[k]}`:''}</div>`).join('');
+ descBox.textContent=characterDescription(); promptBox.textContent=prompt(false);
 }
-function showToast(msg){
-  toast.textContent=msg; toast.classList.add('show');
-  setTimeout(()=>toast.classList.remove('show'),1600);
-}
-async function copyText(text, btn){
-  try{ await navigator.clipboard.writeText(text); }
-  catch(e){ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
-  if(btn){ const old=btn.innerHTML; btn.classList.add('done'); btn.innerHTML='✓ 복사 완료'; setTimeout(()=>{btn.classList.remove('done'); btn.innerHTML=old;},1500); }
-  showToast('프롬프트가 복사되었습니다.');
-}
-document.getElementById('copyBtn').addEventListener('click',e=>copyText(buildPrompt(false), e.currentTarget));
-document.getElementById('regenBtn').addEventListener('click',e=>{
-  regenerateCount++;
-  const text = buildPrompt(true) + `\n- 새로 생성하는 ${regenerateCount}번째 시도입니다.`;
-  promptBox.textContent = text;
-  copyText(text, e.currentTarget);
-});
-
-const dz = document.getElementById('dropzone');
-const img = document.getElementById('avatarImg');
-function setImage(src){ img.src=src; dz.classList.add('has-img'); }
-dz.addEventListener('dragover',e=>{e.preventDefault(); dz.classList.add('drag');});
-dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
-dz.addEventListener('drop',e=>{
-  e.preventDefault(); dz.classList.remove('drag');
-  const file = e.dataTransfer.files && e.dataTransfer.files[0];
-  if(file && file.type.startsWith('image/')){ const r=new FileReader(); r.onload=()=>setImage(r.result); r.readAsDataURL(file); }
-});
-dz.addEventListener('paste',e=>{
-  const items = e.clipboardData && e.clipboardData.items;
-  if(!items) return;
-  for(const it of items){
-    if(it.type.startsWith('image/')){ const file=it.getAsFile(); const r=new FileReader(); r.onload=()=>setImage(r.result); r.readAsDataURL(file); break; }
-  }
-});
+function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1500)}
+async function copyText(text,btn){try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()} if(btn){const old=btn.innerHTML;btn.classList.add('done');btn.innerHTML='✓ 복사 완료';setTimeout(()=>{btn.classList.remove('done');btn.innerHTML=old},1500)}showToast('프롬프트가 복사되었습니다.')}
+document.getElementById('copyBtn').addEventListener('click',e=>copyText(prompt(false),e.currentTarget));
+document.getElementById('regenBtn').addEventListener('click',e=>{regen++; const text=prompt(true)+`\n- 새로 생성하는 ${regen}번째 시도입니다.`; promptBox.textContent=text; copyText(text,e.currentTarget)});
+const dz=document.getElementById('dropzone'), img=document.getElementById('avatarImg');
+function setImage(src){img.src=src;dz.classList.add('has-img')}
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag')});dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
+dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag');const f=e.dataTransfer.files&&e.dataTransfer.files[0];if(f&&f.type.startsWith('image/')){const r=new FileReader();r.onload=()=>setImage(r.result);r.readAsDataURL(f)}});
+dz.addEventListener('paste',e=>{const items=e.clipboardData&&e.clipboardData.items;if(!items)return;for(const it of items){if(it.type.startsWith('image/')){const f=it.getAsFile();const r=new FileReader();r.onload=()=>setImage(r.result);r.readAsDataURL(f);break}}});
 dz.addEventListener('click',()=>dz.focus());
 update();
 </script>
