@@ -114,7 +114,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:radial-gradient(circle at 
         <button class="btn secondary" id="refreshBtn">🔄 프롬프트 새로고침</button>
       </div>
       <p class="copy-note important-copy">❗이미지를 첨부하지 않으면 캐릭터가 정체성 포스터에 반영되지 않습니다.</p>
-      <div class="warn" id="missingBox">아직 STEP2 결과와 캐릭터 이미지가 모두 준비되지 않았습니다.</div>
+
 
       <div class="result-zone">
         <h3>🏆 완성된 정체성 포스터 붙여넣기</h3>
@@ -142,7 +142,6 @@ const step2 = document.getElementById('step2');
 const extraLine = document.getElementById('extraLine');
 const promptBox = document.getElementById('promptBox');
 const statusEl = document.getElementById('status');
-const missingBox = document.getElementById('missingBox');
 const copyBtn = document.getElementById('copyBtn');
 const toast = document.getElementById('toast');
 let posterStyle = '작은 정보 카드가 격자로 배치된 정체성 지도 스타일';
@@ -178,10 +177,6 @@ function update(){
   copyBtn.disabled = !ready;
   statusEl.className = 'status ' + (ready?'ready':'wait');
   statusEl.textContent = ready ? '복사 가능' : '준비 중';
-  missingBox.style.display = ready ? 'none' : 'block';
-  if(!step2.value.trim() && !hasCharImage) missingBox.textContent = 'STEP2 결과와 캐릭터 이미지가 필요합니다.';
-  else if(!step2.value.trim()) missingBox.textContent = 'STEP2 결과를 붙여넣어 주세요.';
-  else if(!hasCharImage) missingBox.textContent = 'STEP3에서 만든 캐릭터 이미지를 붙여넣어 주세요.';
 }
 function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600)}
 async function copyText(text, btn){
