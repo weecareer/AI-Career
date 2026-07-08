@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STEP 2 | AI와 함께 발견한 나</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{
+  --navy:#15224a;--blue:#2f6bed;--sky:#eaf2ff;--mint:#27b99a;--pink:#ff7aa5;--yellow:#ffd978;
+  --bg1:#eef6ff;--bg2:#fff8e6;--line:#dce7ff;--ink:#17234b;--muted:#68779b;--card:#ffffff;
+  --shadow:0 18px 45px rgba(21,34,74,.12);--soft:0 10px 28px rgba(47,107,237,.10);
+}
+*{box-sizing:border-box} body{margin:0;font-family:'Jua','Noto Sans KR',sans-serif;color:var(--ink);background:
+  radial-gradient(circle at 12% 10%,#fff3bb 0,transparent 24%),radial-gradient(circle at 90% 12%,#dff5ff 0,transparent 26%),linear-gradient(135deg,var(--bg1),var(--bg2));min-height:100vh;padding:28px 16px 70px;}
+.wrap{max-width:1180px;margin:0 auto}.hero{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px 34px;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;margin-bottom:22px}.badge{display:inline-flex;gap:8px;align-items:center;background:#e9efff;color:#2d61e8;padding:8px 16px;border-radius:999px;font-weight:900;font-size:15px}.hero h1{margin:14px 0 8px;font-size:44px;line-height:1.08;letter-spacing:-1px}.hero p{font-family:'Noto Sans KR',sans-serif;font-weight:800;font-size:18px;line-height:1.6;margin:0}.home{display:inline-flex;text-decoration:none;color:#fff;background:linear-gradient(135deg,#1b2b63,#2f6bed);padding:13px 18px;border-radius:16px;font-size:16px;box-shadow:0 12px 28px rgba(47,107,237,.25)}
+.section{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:28px;box-shadow:var(--soft);padding:28px;margin:20px 0}.title-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}.num{width:52px;height:52px;border-radius:18px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:24px}.section h2{font-size:30px;margin:0}.mini{font-family:'Noto Sans KR',sans-serif;color:var(--muted);font-weight:800;margin:8px 0 0;line-height:1.55}.work{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:25px;padding:24px;box-shadow:var(--soft)}.meta{display:grid;grid-template-columns:1.2fr .7fr 1fr;gap:12px;margin-bottom:18px}.field{margin-bottom:15px}.field label{display:flex;justify-content:space-between;align-items:center;font-size:19px;margin-bottom:8px}.hint{font-size:14px;color:#60709a;background:#edf3ff;border-radius:999px;padding:4px 10px}input,textarea{width:100%;border:1.5px solid #cddcff;border-radius:16px;padding:14px 16px;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:16px;color:#1d2945;background:#fbfdff}textarea{min-height:120px;resize:vertical}.prompt-preview{background:#f8fbff;border:1.5px solid #dbe7ff;border-radius:20px;padding:18px;font-family:'Noto Sans KR',sans-serif;line-height:1.72;font-weight:700;white-space:pre-wrap;min-height:360px}.copy-btn,.save-btn,.reset-btn{font-family:'Jua',sans-serif;border:0;border-radius:16px;padding:14px 18px;cursor:pointer;font-size:17px;transition:.16s;box-shadow:0 10px 22px rgba(21,34,74,.12)}.copy-btn:hover,.save-btn:hover,.reset-btn:hover{transform:translateY(-2px)}.copy-btn{width:100%;background:linear-gradient(135deg,#15224a,#2f6bed);color:#fff;margin-top:12px}.save-btn{width:100%;background:linear-gradient(135deg,#1f9d6b,#27b99a);color:#fff}.reset-btn{border:1.5px solid #cddcff;background:#fff;color:#2f6bed}.action-row{display:grid;grid-template-columns:1fr 180px;gap:12px;margin-top:10px}
+.choice-section{margin:20px 0}.choice-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.choice-head h3{font-size:24px;margin:0}.limit{font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:900;color:#56658d;background:#f1f5ff;border:1px solid #dfe8ff;border-radius:999px;padding:6px 12px}.chips{display:flex;flex-wrap:wrap;gap:10px}.chip{position:relative;display:inline-flex;align-items:center;gap:7px;padding:10px 12px;border:1.5px solid #dce7ff;border-radius:999px;background:#fbfdff;cursor:pointer;user-select:none;font-family:'Noto Sans KR',sans-serif;font-weight:800;color:#27365f;transition:.14s}.chip input{position:absolute;opacity:0;pointer-events:none}.chip .bot{display:none;font-size:12px;line-height:1;background:#e9efff;border:1px solid #cfdcff;border-radius:999px;padding:3px 5px;color:#2f6bed}.chip.recommended .bot{display:inline-flex}.chip:has(input:checked){background:#e9f4ff;border-color:#2f6bed;color:#163a8a;box-shadow:0 8px 18px rgba(47,107,237,.12)}.chip.maxed:not(:has(input:checked)){opacity:.46}.choice-note{display:none;margin-top:12px;background:#fff8d6;border:1.5px solid #ffe58a;border-radius:16px;padding:12px 14px;color:#6d5200;font-family:'Noto Sans KR',sans-serif;font-weight:800;line-height:1.5}.choice-note.show{display:block}.selected-summary{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}.summary-card{background:#f8fbff;border:1px solid #dfe8ff;border-radius:18px;padding:14px}.summary-card b{display:block;color:#2f6bed;margin-bottom:6px}.summary-card span{font-family:'Noto Sans KR';font-weight:800;color:#26365f;line-height:1.5}.result-panel{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:24px;box-shadow:var(--soft)}.ai-result{min-height:190px}.save-guide{margin-top:12px;padding:13px 15px;border-radius:15px;background:#f1fff9;border:1px solid #c8f2df;color:#176b52;font-family:'Noto Sans KR',sans-serif;font-weight:800;line-height:1.55;font-size:14px}.footer{display:flex;justify-content:space-between;gap:12px;margin-top:20px}.next{color:#fff;text-decoration:none;background:#15224a;border-radius:16px;padding:14px 18px}.back{color:#15224a;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px}
+#captureArea{position:fixed;left:-99999px;top:0;width:1040px;background:linear-gradient(135deg,#eff6ff,#fffaf0);padding:36px;color:#14204a;font-family:'Noto Sans KR',sans-serif}.cap-card{background:#fff;border:1px solid #d8e5ff;border-radius:34px;box-shadow:0 22px 55px rgba(21,34,74,.12);padding:34px}.cap-head{background:linear-gradient(135deg,#f7fbff,#fff);border:1px solid #dfe9ff;border-radius:26px;padding:24px 26px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center}.cap-head h1{font-family:'Jua';font-size:38px;margin:0;color:#15224a}.cap-meta{background:#edf3ff;border-radius:18px;padding:12px 16px;color:#1b2b63;font-weight:900;line-height:1.8;text-align:right}.cap-label{display:inline-block;background:#15224a;color:#fff;padding:9px 16px;border-radius:999px;font-family:'Jua';font-size:18px;margin-bottom:10px}.cap-section{margin:18px 0}.cap-box{background:#fff;border:1.5px solid #dfe9ff;border-radius:22px;padding:20px;line-height:1.72;font-size:16px;white-space:pre-wrap}.cap-ai{background:linear-gradient(180deg,#fff,#f1fff9);border-color:#beeada;color:#1d3a2f}.cap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.cap-input-item{background:#fbfdff;border:1.5px solid #dfe9ff;border-radius:20px;padding:16px 18px;min-height:86px}.cap-input-item b{font-family:'Jua';font-size:18px;color:#2f6bed;margin-bottom:8px;display:block}.cap-input-item span{display:block;font-size:16px;line-height:1.55;color:#26365f}.watermark{margin-top:20px;text-align:center;background:#f1f6ff;border-radius:999px;padding:10px;color:#52658f;font-family:'Jua';font-size:16px}
+@media(max-width:900px){.hero,.work{grid-template-columns:1fr}.hero h1{font-size:34px}.meta{grid-template-columns:1fr}.selected-summary,.cap-grid{grid-template-columns:1fr}.action-row{grid-template-columns:1fr}.reset-btn{width:100%}}@media(max-width:560px){body{padding:14px 8px}.section,.hero{padding:20px;border-radius:22px}.section h2{font-size:25px}.chip{font-size:14px}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <span class="badge">🧭 STEP 2 · 자기이해 미션</span>
+      <h1>AI와 함께 발견한 나</h1>
+      <p>AI의 분석을 참고하되, 최종 선택은 내가 합니다. 나의 정체성 포스터에 들어갈 재료를 모아 봅시다.</p>
+    </div>
+    <a class="home" href="index.html">🏠 탐험 지도</a>
+  </header>
+
+  <section class="section">
+    <div class="title-row"><div class="num">1</div><div><h2>STEP1 결과 가져오기</h2><p class="mini">STEP1에서 받은 AI 강점 분석 결과를 붙여넣으세요. 붙여넣은 내용 속 단어와 비슷한 선택지는 작은 🤖 배지로 표시됩니다.</p></div></div>
+    <div class="panel">
+      <div class="meta">
+        <div class="field"><label>🏫 학교</label><input id="school" placeholder="예: ○○중학교"></div>
+        <div class="field"><label>🎒 학년</label><input id="grade" placeholder="예: 3학년"></div>
+        <div class="field"><label>👤 이름</label><input id="name" placeholder="예: ○○○"></div>
+      </div>
+      <div class="field"><label>🤖 STEP1 AI 결과</label><textarea id="step1Result" placeholder="STEP1에서 ChatGPT 또는 Gemini가 답해 준 강점 5가지, 프로필 이름, 설명을 붙여넣으세요."></textarea></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="title-row"><div class="num">2</div><div><h2>나에게 맞는 항목 선택하기</h2><p class="mini">🤖 표시는 AI가 추천했거나, STEP1 결과와 관련 있어 보이는 항목입니다. AI 추천과 달라도 괜찮습니다. 내가 더 맞다고 느끼는 것을 선택하세요.</p></div></div>
+    <div class="choice-section" data-group="values" data-limit="3">
+      <div class="choice-head"><h3>💎 가치관</h3><span class="limit">3개 선택</span></div>
+      <div class="chips" id="valuesChips"></div>
+      <div class="choice-note" id="valuesNote">😊 AI 추천과 다른 선택을 했네요. 좋아요! AI의 답은 참고 자료이고, 최종 선택은 내가 하는 것입니다.</div>
+    </div>
+    <div class="choice-section" data-group="traits" data-limit="5">
+      <div class="choice-head"><h3>🌱 성격 특징</h3><span class="limit">5개 선택</span></div>
+      <div class="chips" id="traitsChips"></div>
+      <div class="choice-note" id="traitsNote">😊 AI 추천과 다른 선택이 포함되어 있어요. 스스로를 더 잘 아는 사람은 바로 나입니다.</div>
+    </div>
+    <div class="choice-section" data-group="interests" data-limit="3">
+      <div class="choice-head"><h3>🔎 관심 분야</h3><span class="limit">3개 선택</span></div>
+      <div class="chips" id="interestsChips"></div>
+      <div class="choice-note" id="interestsNote">😊 AI가 놓친 관심 분야를 선택했네요. 그 선택도 정체성 포스터의 중요한 재료가 됩니다.</div>
+    </div>
+    <div class="choice-section" data-group="careers" data-limit="3">
+      <div class="choice-head"><h3>🧭 진로 분야</h3><span class="limit">3개 선택</span></div>
+      <div class="chips" id="careersChips"></div>
+      <div class="choice-note" id="careersNote">😊 AI 추천과 다른 진로 분야를 선택했습니다. 이유를 생각해 보면 진로 탐색이 더 깊어집니다.</div>
+    </div>
+    <div class="selected-summary">
+      <div class="summary-card"><b>가치관</b><span id="sumValues">아직 선택하지 않음</span></div>
+      <div class="summary-card"><b>성격 특징</b><span id="sumTraits">아직 선택하지 않음</span></div>
+      <div class="summary-card"><b>관심 분야</b><span id="sumInterests">아직 선택하지 않음</span></div>
+      <div class="summary-card"><b>진로 분야</b><span id="sumCareers">아직 선택하지 않음</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="title-row"><div class="num">3</div><div><h2>내 생각 한 줄 더하기</h2><p class="mini">너무 길게 쓰지 않아도 됩니다. 한 줄이면 충분합니다.</p></div></div>
+    <div class="work">
+      <div class="panel">
+        <div class="field"><label>👍 AI가 알려준 내용 중 가장 공감한 것</label><textarea id="agree" placeholder="예: 책임감이 있다는 설명이 나와 잘 맞았다."></textarea></div>
+        <div class="field"><label>❓ AI가 알려준 내용 중 가장 의외였던 것</label><textarea id="surprise" placeholder="예: 발표력이 강점이라고 해서 조금 놀랐다."></textarea></div>
+        <div class="field"><label>💬 AI에게 마지막으로 더 물어보고 싶은 질문</label><textarea id="question" placeholder="예: 내가 선택한 진로 분야를 더 알아보려면 무엇부터 해보면 좋을까?"></textarea></div>
+      </div>
+      <div class="panel">
+        <div class="field"><label>📋 AI에게 다시 보낼 프롬프트</label><div class="prompt-preview" id="promptPreview"></div></div>
+        <button class="copy-btn" id="copyBtn">📋 프롬프트 복사하기</button>
+      </div>
+    </div>
+    <div class="result-panel">
+      <div class="field"><label>🤖 AI 최종 답변 붙여넣기</label><textarea class="ai-result" id="aiResult" placeholder="AI가 정리해 준 나의 특징, 진로 방향, 포스터 문구 등을 이곳에 붙여넣으세요."></textarea></div>
+      <div class="action-row"><button class="save-btn" id="saveBtn">🖼 활동 결과 이미지로 저장하기</button><button class="reset-btn" id="resetBtn">↺ 다시쓰기</button></div>
+      <div class="save-guide">저장한 이미지는 패들렛에 올려 주세요. 선생님은 선택한 항목과 AI 최종 답변을 함께 확인할 수 있습니다.</div>
+    </div>
+  </section>
+  <div class="footer"><a class="back" href="step1.html">← 이전 단계로</a><a class="next" href="step3.html">다음 단계로 →</a></div>
+</div>
+
+<div id="captureArea">
+  <div class="cap-card">
+    <div class="cap-head"><h1>STEP 2. AI와 함께 발견한 나</h1><div class="cap-meta" id="capMeta"></div></div>
+    <div class="cap-section"><span class="cap-label">① 내가 선택한 항목</span><div class="cap-grid" id="capChoices"></div></div>
+    <div class="cap-section"><span class="cap-label">② 내 생각</span><div class="cap-grid" id="capThoughts"></div></div>
+    <div class="cap-section"><span class="cap-label">③ AI 최종 답변</span><div class="cap-box cap-ai" id="capAI"></div></div>
+    <div class="watermark">AI와 함께 떠나는 진로탐험 · 좋은 질문이 나의 가능성을 더 선명하게 보여줍니다.</div>
+  </div>
+</div>
+
+<script>
+const groups={
+  values:['성장','배려','도전','책임','창의','성취','협력','정직','자유','안정','열정','공정','호기심','자신감','끈기','도움','배움','즐거움'],
+  traits:['책임감 있다','꼼꼼하다','차분하다','적극적이다','긍정적이다','배려심이 있다','성실하다','호기심이 많다','창의적이다','계획적이다','끈기가 있다','유머감각이 있다','도전적이다','집중력이 좋다','리더십이 있다','협동심이 있다','신중하다','논리적이다','적응력이 좋다','탐구심이 많다'],
+  interests:['인공지능','컴퓨터','게임','교육','디자인','미술','음악','영상 제작','방송','스포츠','심리','의료','동물','환경','법률','경찰','건축','과학','역사','외국어','요리','여행'],
+  careers:['교육','보건·의료','정보기술','콘텐츠 제작','예술·디자인','공학·기술','자연과학','사회과학','경영·경제','법·행정','환경·생명','스포츠','상담·복지','문화·관광','창업','공공·안전']
+};
+const ids={values:'valuesChips',traits:'traitsChips',interests:'interestsChips',careers:'careersChips'};
+const sums={values:'sumValues',traits:'sumTraits',interests:'sumInterests',careers:'sumCareers'};
+const notes={values:'valuesNote',traits:'traitsNote',interests:'interestsNote',careers:'careersNote'};
+function normalize(s){return (s||'').replace(/\s/g,'').toLowerCase();}
+function renderChips(){
+  Object.keys(groups).forEach(g=>{
+    const box=document.getElementById(ids[g]); box.innerHTML='';
+    groups[g].forEach(v=>{
+      const label=document.createElement('label'); label.className='chip'; label.dataset.value=v; label.dataset.group=g;
+      label.innerHTML=`<input type="checkbox" name="${g}" value="${v}"><span class="bot" title="AI 추천">🤖</span><span>${v}</span>`;
+      box.appendChild(label);
+    });
+  });
+}
+function markRecommended(){
+  const text=normalize(document.getElementById('step1Result').value);
+  Object.keys(groups).forEach(g=>{
+    document.querySelectorAll(`.chip[data-group="${g}"]`).forEach(chip=>{
+      const v=normalize(chip.dataset.value.replace(/있다|많다|좋다/g,''));
+      if(v && text.includes(v)) chip.classList.add('recommended');
+      else chip.classList.remove('recommended');
+    });
+  });
+  updateSummaries();
+}
+function getSelected(g){return [...document.querySelectorAll(`input[name="${g}"]:checked`)].map(i=>i.value)}
+function selectedText(g){const arr=getSelected(g); return arr.length?arr.join(', '):'아직 선택하지 않음'}
+function enforceLimit(e){
+  const input=e.target; if(!input.matches('input[type="checkbox"]')) return;
+  const g=input.name; const section=document.querySelector(`.choice-section[data-group="${g}"]`);
+  const limit=Number(section.dataset.limit||99); const selected=getSelected(g);
+  if(selected.length>limit){ input.checked=false; alert(`${limit}개까지만 선택할 수 있어요.`); return; }
+  updateSummaries();
+}
+function updateSummaries(){
+  Object.keys(sums).forEach(g=>{
+    document.getElementById(sums[g]).textContent=selectedText(g);
+    const selected=[...document.querySelectorAll(`input[name="${g}"]:checked`)];
+    const hasNonRecommended=selected.some(i=>!i.closest('.chip').classList.contains('recommended'));
+    document.getElementById(notes[g]).classList.toggle('show',hasNonRecommended && selected.length>0);
+    const section=document.querySelector(`.choice-section[data-group="${g}"]`);
+    const limit=Number(section.dataset.limit||99); const maxed=selected.length>=limit;
+    document.querySelectorAll(`.chip[data-group="${g}"]`).forEach(chip=>chip.classList.toggle('maxed',maxed));
+  });
+  updatePrompt();
+}
+function val(id){return document.getElementById(id).value.trim()}
+function buildPrompt(){
+  return `너는 중학교 3학년 학생의 자기이해와 진로 탐색을 돕는 진로상담 전문가야.\n\n다음은 STEP1에서 받은 AI 강점 분석 결과와, 내가 직접 선택한 내용이야.\n\n[STEP1 AI 분석 결과]\n${val('step1Result')||'[STEP1 AI 결과]'}\n\n[내가 선택한 가치관]\n${selectedText('values')}\n\n[내가 선택한 성격 특징]\n${selectedText('traits')}\n\n[내가 선택한 관심 분야]\n${selectedText('interests')}\n\n[내가 선택한 진로 분야]\n${selectedText('careers')}\n\n[가장 공감한 내용]\n${val('agree')||'[공감한 내용]'}\n\n[가장 의외였던 내용]\n${val('surprise')||'[의외였던 내용]'}\n\n[AI에게 더 묻고 싶은 질문]\n${val('question')||'[마지막 질문]'}\n\n이 내용을 바탕으로 다음을 작성해줘.\n1. 나의 특징을 5문장으로 정리하기\n2. 나에게 어울리는 진로 방향 3가지와 그 이유 설명하기\n3. 나의 정체성 포스터에 넣기 좋은 짧은 문구 5개 만들기\n4. 나를 한 줄로 표현하는 문장 3개 제안하기\n5. 나를 표현하는 이모지 3개 추천하기\n6. AI가 주는 응원 메시지 1문장 작성하기\n7. 마지막 질문에 답하기\n\n중학교 3학년이 이해하기 쉬운 말로 따뜻하게 설명해줘. 단, 내가 입력한 내용에 근거해서 설명하고, 근거가 부족한 내용은 단정하지 말아줘.`;
+}
+function updatePrompt(){document.getElementById('promptPreview').textContent=buildPrompt();}
+renderChips();
+document.addEventListener('change',enforceLimit);
+['step1Result','agree','surprise','question','school','grade','name'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{ if(id==='step1Result') markRecommended(); else updatePrompt(); }));
+updatePrompt();
+
+document.getElementById('copyBtn').addEventListener('click', async()=>{
+  const text=buildPrompt();
+  try{await navigator.clipboard.writeText(text);}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+  const btn=document.getElementById('copyBtn'); const old=btn.textContent; btn.textContent='✅ 복사 완료! AI에게 붙여넣어 보세요'; setTimeout(()=>btn.textContent=old,1800);
+});
+function item(label,text){return `<div class="cap-input-item"><b>${label}</b><span>${(text||'작성하지 않음').replace(/</g,'&lt;')}</span></div>`}
+document.getElementById('saveBtn').addEventListener('click',async()=>{
+  document.getElementById('capMeta').innerHTML=`${val('school')||'학교 미입력'}<br>${val('grade')||'학년 미입력'} · ${val('name')||'이름 미입력'}`;
+  document.getElementById('capChoices').innerHTML=
+    item('💎 가치관',selectedText('values'))+item('🌱 성격 특징',selectedText('traits'))+item('🔎 관심 분야',selectedText('interests'))+item('🧭 진로 분야',selectedText('careers'));
+  document.getElementById('capThoughts').innerHTML=
+    item('👍 가장 공감한 것',val('agree'))+item('❓ 가장 의외였던 것',val('surprise'))+item('💬 마지막 질문',val('question'))+item('🤖 STEP1 결과 요약',val('step1Result').slice(0,260)+(val('step1Result').length>260?'...':''));
+  document.getElementById('capAI').textContent=val('aiResult')||'AI 최종 답변을 붙여넣지 않았습니다.';
+  const canvas=await html2canvas(document.getElementById('captureArea'),{scale:2,backgroundColor:null,useCORS:true});
+  const a=document.createElement('a'); const n=(val('name')||'이름').replace(/[\\/:*?"<>|]/g,''); a.download=`AI와함께발견한나_${n}.png`; a.href=canvas.toDataURL('image/png'); a.click();
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  if(confirm('작성한 내용을 모두 지울까요?')){
+    document.querySelectorAll('input[type="text"], textarea').forEach(el=>el.value='');
+    document.querySelectorAll('input[type="checkbox"]').forEach(el=>el.checked=false);
+    markRecommended(); updatePrompt();
+  }
+});
+</script>
+</body>
+</html>
