@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STEP4 나의 정체성 포스터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#16244d; --blue:#2867e7; --sky:#eaf3ff; --cyan:#35a9ff; --mint:#dff9f3;
+  --ink:#1f2a44; --muted:#7583a4; --line:#dce7f7; --card:#ffffff; --cream:#fff9e8;
+  --purple:#7b61ff; --green:#24b985; --pink:#ff6f91; --orange:#ff9f43; --yellow:#ffd166;
+  --soft:#f7faff; --danger:#ef476f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:radial-gradient(circle at 5% 0%,#eff8ff 0,#f8fbff 38%,#edf3ff 100%);color:var(--ink);padding:22px;min-height:100vh;}
+.wrapper{max-width:1320px;margin:0 auto;}
+.hero{background:linear-gradient(135deg,#13204a,#245fe7 58%,#6cc8ff);border-radius:28px;color:white;padding:28px 34px;box-shadow:0 22px 50px rgba(22,36,77,.22);display:flex;justify-content:space-between;gap:22px;align-items:center;position:relative;overflow:hidden;}
+.hero:before{content:"";position:absolute;right:-80px;top:-120px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.14)}
+.hero:after{content:"";position:absolute;left:38%;bottom:-70px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero h1{font-family:'Jua',sans-serif;font-size:42px;font-weight:400;letter-spacing:-.5px;margin-bottom:8px;position:relative;z-index:1}
+.hero p{font-size:17px;line-height:1.65;opacity:.95;position:relative;z-index:1}
+.badge{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 15px;font-weight:900;margin-bottom:12px;position:relative;z-index:1}
+.home{position:relative;z-index:1;color:white;text-decoration:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:12px 17px;border-radius:14px;font-weight:900;white-space:nowrap}.home:hover{background:rgba(255,255,255,.25)}
+.notice{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 18px;color:#425174;box-shadow:0 10px 28px rgba(27,53,105,.08);display:flex;gap:10px;align-items:flex-start;line-height:1.55;font-size:14px}.notice b{color:var(--navy)}
+.urgent{margin-top:14px;background:#fff1f1;border:2px solid #ff8a8a;border-radius:20px;padding:16px 18px;color:#7f1d1d;box-shadow:0 10px 28px rgba(239,71,111,.12);line-height:1.6}.urgent-title{font-size:18px;font-weight:900;color:#d31818;margin-bottom:8px;display:flex;gap:8px;align-items:center}.urgent-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.urgent-step{background:#fff;border:1px solid #ffc7c7;border-radius:14px;padding:10px;font-size:13px;font-weight:900;color:#8f1f1f}.urgent-step b{color:#d31818}@media(max-width:760px){.urgent-steps{grid-template-columns:1fr 1fr}}
+.main{display:grid;grid-template-columns:.92fr 1.08fr;gap:22px;margin-top:22px;align-items:start}.panel{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 16px 45px rgba(27,53,105,.11)}
+.panel-title{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-title h2{font-family:'Jua',sans-serif;color:var(--navy);font-weight:400;font-size:28px}.hint{color:var(--muted);font-size:14px;line-height:1.5}.meta{display:grid;grid-template-columns:1.4fr .9fr 1fr;gap:10px;margin-bottom:16px}.field label{display:block;font-size:13px;color:var(--muted);font-weight:900;margin:0 0 6px 4px}.field input,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;background:white;padding:12px 14px;font-family:inherit;font-size:15px;outline:none;transition:.15s}.field textarea{min-height:150px;resize:vertical;line-height:1.65}.field input:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(40,103,231,.09)}
+.section{margin-top:16px;padding-top:16px;border-top:1px dashed #d7e2f5}.section h3{font-family:'Jua',sans-serif;font-size:23px;color:var(--navy);font-weight:400;margin-bottom:10px}.section .small-guide{font-size:13px;color:#66789f;line-height:1.5;margin-bottom:9px}
+.dropzone{border:2px dashed #b9c9e8;border-radius:20px;min-height:250px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);background:#f8fbff;position:relative;overflow:hidden;padding:16px;transition:.16s}.dropzone.drag{background:#eef7ff;border-color:var(--blue)}.dropzone img{max-width:100%;max-height:240px;border-radius:16px;display:none;object-fit:contain}.dropzone.has-img img{display:block}.dropzone.has-img .dz-text{display:none}.clear-btn{margin-top:10px;border:1px solid #d7e4fb;background:#edf3ff;color:var(--navy);border-radius:13px;padding:10px 13px;font-family:inherit;font-weight:900;cursor:pointer}.clear-btn:hover{background:#e2ecff}.mini-note{font-size:13px;color:var(--muted);line-height:1.55;margin-top:8px}.mini-note b{color:var(--navy)}
+.style-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:8px}.option{border:1.5px solid var(--line);background:#fff;border-radius:16px;padding:12px 10px;min-height:54px;display:flex;align-items:center;justify-content:center;text-align:center;gap:7px;cursor:pointer;font-weight:900;color:#314063;transition:.16s;user-select:none}.option:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(40,103,231,.12)}.option.active{background:linear-gradient(135deg,#eaf3ff,#f5fbff);border-color:var(--blue);box-shadow:0 8px 24px rgba(40,103,231,.18);color:var(--navy)}.option .ico{font-size:20px}
+.prompt-card{background:linear-gradient(180deg,#ffffff,#f6faff);border:1px solid var(--line);border-radius:26px;padding:22px;position:sticky;top:18px;box-shadow:0 18px 44px rgba(27,53,105,.12)}.prompt-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px}.prompt-top h2{font-family:'Jua',sans-serif;font-size:30px;color:var(--navy);font-weight:400}.status{font-size:13px;font-weight:900;color:#fff;background:var(--navy);border-radius:999px;padding:8px 12px;white-space:nowrap}.status.wait{background:#8794b1}.status.ready{background:#18a77a}
+.poster-preview{background:#fff;border:1px solid #dfe8fb;border-radius:22px;padding:14px;margin:12px 0 16px;display:grid;grid-template-columns:1fr 1.6fr;gap:12px;align-items:center}.preview-mini{height:150px;border-radius:18px;background:linear-gradient(135deg,#eaf3ff,#fff9e8);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center}.preview-mini .bubble{position:absolute;background:#fff;border:1px solid #dbe7fb;border-radius:18px;padding:8px 10px;font-size:12px;font-weight:900;color:var(--navy);box-shadow:0 8px 20px rgba(27,53,105,.07)}.preview-mini .b1{left:10px;top:12px}.preview-mini .b2{right:10px;top:35px}.preview-mini .b3{left:18px;bottom:16px}.preview-mini .b4{right:18px;bottom:14px}.preview-mini .char{font-size:42px;background:white;border-radius:50%;padding:12px;box-shadow:0 10px 24px rgba(27,53,105,.14);z-index:2}.preview-desc h3{font-family:'Jua',sans-serif;color:var(--navy);font-size:23px;font-weight:400;margin-bottom:8px}.preview-desc p{font-size:13.5px;line-height:1.6;color:#566586}.prompt-box{background:#13204a;color:#f4f8ff;border-radius:18px;padding:17px;line-height:1.7;font-size:14.5px;white-space:pre-wrap;max-height:360px;overflow:auto;border:1px solid rgba(255,255,255,.08)}.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.btn{border:none;border-radius:15px;padding:14px 15px;font-family:inherit;font-size:16px;font-weight:900;cursor:pointer;transition:.14s;display:flex;align-items:center;justify-content:center;gap:8px}.btn.primary{background:var(--navy);color:white}.btn.primary:hover:not(:disabled){background:#22366d}.btn.secondary{background:#edf3ff;color:var(--navy);border:1px solid #d7e4fb}.btn.secondary:hover:not(:disabled){background:#e2ecff}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none!important}.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,36,77,.14)}.btn.done{background:#17a977;color:white}.copy-note{font-size:13px;color:var(--muted);line-height:1.55;margin-top:9px}.copy-note b{color:var(--navy)}
+.important-guide{color:#d31818!important;font-weight:900!important;font-size:15px}.important-guide mark{background:#fff1a6;color:#b00020;border-radius:6px;padding:1px 5px}.important-copy{color:#d31818!important;font-weight:900!important;background:#fff6f6;border:1px solid #ffd0d0;border-radius:13px;padding:10px 12px}
+.result-zone{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}.result-zone h3{font-family:'Jua',sans-serif;font-size:22px;color:var(--navy);font-weight:400;margin-bottom:8px}.result-zone .dropzone{min-height:310px}.result-zone .dropzone img{max-height:300px}.warn{margin-top:10px;background:#fff6df;border:1px solid #ffe1a3;color:#71520c;border-radius:14px;padding:11px 13px;font-size:13px;line-height:1.55}.nav{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}.nav a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:900;border-radius:15px;padding:14px 18px}.nav .prev{color:var(--navy);background:white;border:1px solid var(--line)}.nav .next{color:white;background:var(--navy);border:1px solid var(--navy)}.nav a:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,36,77,.14)}
+.footer{margin-top:16px;color:var(--muted);font-size:13px;text-align:center}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#13204a;color:white;border-radius:999px;padding:12px 18px;font-weight:900;box-shadow:0 14px 35px rgba(22,36,77,.25);display:none;z-index:999}.toast.show{display:block}
+@media(max-width:1020px){.main{grid-template-columns:1fr}.prompt-card{position:relative;top:0}.meta{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.hero h1{font-size:34px}.style-row{grid-template-columns:1fr 1fr}.poster-preview{grid-template-columns:1fr}}@media(max-width:560px){body{padding:12px}.panel,.hero,.prompt-card{border-radius:20px;padding:18px}.hero h1{font-size:30px}.style-row,.btn-row{grid-template-columns:1fr}.nav{gap:10px}.nav a{padding:12px 13px}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <section class="hero">
+    <div>
+      <div class="badge">🪪 STEP 4 · Identity Poster</div>
+      <h1>나의 정체성 포스터</h1>
+      <p>STEP2의 자기이해 결과와 STEP3의 캐릭터 이미지를 활용해<br>AI가 보기 좋은 정체성 포스터를 만들 수 있도록 프롬프트를 완성합니다.</p>
+    </div>
+    <a class="home" href="index.html">🏠 탐험 메인으로</a>
+  </section>
+  <div class="notice"><span>💡</span><div><b>활동 안내</b> · 이 단계에서는 HTML 안에서 포스터를 직접 꾸미는 것이 아니라, 생성형 AI가 포스터를 잘 만들도록 도와주는 <b>정체성 포스터 프롬프트</b>를 만듭니다.</div></div>
+  <main class="main">
+    <section class="panel">
+      <div class="panel-title"><h2>포스터 재료 준비하기</h2><span class="hint">붙여넣기만 해도 프롬프트가 완성됩니다.</span></div>
+      <div class="meta">
+        <div class="field"><label>학교(학교명만 입력하세요.)</label><input id="school" placeholder="예) 강서"></div>
+        <div class="field"><label>학년(숫자만 입력하세요.)</label><input id="grade" placeholder="예) 3"></div>
+        <div class="field"><label>이름</label><input id="name" placeholder="예) 홍길동"></div>
+      </div>
+
+      <div class="section" style="border-top:none;padding-top:0;margin-top:0">
+        <h3>① STEP2 결과 붙여넣기</h3>
+        <p class="small-guide">STEP2에서 받은 결과 전체를 붙여넣으세요. 강점, 가치관, 관심 분야, 진로 분야, 한 줄 표현 등이 들어 있으면 좋습니다.</p>
+        <div class="field"><textarea id="step2" placeholder="STEP2 결과를 여기에 붙여넣으세요.&#10;&#10;예) 나의 특징 5문장, 진로 방향 3가지, 포스터 문구, 이모지, AI 응원 메시지 등"></textarea></div>
+      </div>
+
+      <div class="section">
+        <h3>② STEP3 캐릭터 이미지 붙여넣기</h3>
+        <p class="small-guide">STEP3에서 만든 캐릭터를 AI에 첨부할 예정입니다. 이곳에 붙여넣으면 프롬프트 작성 여부를 확인할 수 있습니다.</p>
+        <div class="dropzone" id="charZone" tabindex="0">
+          <div class="dz-text">STEP3에서 만든 캐릭터 이미지를 복사한 뒤<br>이 영역을 클릭하고 <b>Ctrl+V</b>로 붙여넣거나,<br>이미지 파일을 끌어다 놓으세요.</div>
+          <img id="charImg" alt="STEP3 캐릭터 이미지">
+        </div>
+        <button class="clear-btn" id="clearChar">🖼 캐릭터 이미지 바꿔 넣기</button>
+      </div>
+
+      <div class="section">
+        <h3>③ 포스터 스타일 선택</h3>
+        <p class="small-guide">정체성 지도 느낌을 살리려면 첫 번째 스타일을 추천합니다.</p>
+        <div class="style-row" data-group="posterStyle">
+          <div class="option active" data-value="작은 정보 카드가 격자로 배치된 정체성 지도 스타일"><span class="ico">🧩</span>정체성 지도형</div>
+          <div class="option" data-value="잡지 표지처럼 감각적인 인포그래픽 포스터 스타일"><span class="ico">📰</span>인포그래픽형</div>
+          <div class="option" data-value="노트북 화면이나 웹 대시보드처럼 정리된 세련된 포스터 스타일"><span class="ico">💻</span>디지털 보드형</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>④ 포스터에 꼭 넣고 싶은 말</h3>
+        <p class="small-guide">비워 두어도 됩니다. 꼭 강조하고 싶은 말이 있으면 한 문장만 적으세요.</p>
+        <div class="field"><input id="extraLine" placeholder="예) 호기심을 나침반 삼아 새로운 길을 찾는 사람"></div>
+      </div>
+    </section>
+
+    <aside class="prompt-card">
+      <div class="prompt-top">
+        <div><h2>AI에게 보낼 프롬프트</h2><p class="hint important-guide">⚠️ 반드시 STEP3에서 만든 캐릭터 이미지를 <mark>먼저</mark> 첨부한 후 아래 프롬프트를 붙여넣으세요.</p></div>
+        <div class="status wait" id="status">준비 중</div>
+      </div>
+
+      <div class="poster-preview">
+        <div class="preview-mini">
+          <div class="bubble b1">강점</div><div class="bubble b2">가치관</div><div class="bubble b3">관심</div><div class="bubble b4">진로</div><div class="char">🧑‍🎨</div>
+        </div>
+        <div class="preview-desc">
+          <h3>글상자 안에 이미지는 어떻게 들어가나요?</h3>
+          <p>프롬프트에서 “첨부한 캐릭터와 동일한 인물임을 알아볼 수 있게 유지하되, 각 카드마다 포즈·표정·동작은 다르게 표현해 달라”고 요청합니다. 그러면 AI가 같은 학생이 여러 장면에 등장하는 정체성 포스터를 생성합니다.</p>
+        </div>
+      </div>
+
+      <div class="prompt-box" id="promptBox"></div>
+      <div class="btn-row">
+        <button class="btn primary" id="copyBtn" disabled>📋 프롬프트 복사</button>
+        <button class="btn secondary" id="refreshBtn">🔄 프롬프트 새로고침</button>
+      </div>
+      <p class="copy-note important-copy">❗이미지를 첨부하지 않으면 캐릭터가 정체성 포스터에 반영되지 않습니다.</p>
+      <div class="warn" id="missingBox">아직 STEP2 결과와 캐릭터 이미지가 모두 준비되지 않았습니다.</div>
+
+      <div class="result-zone">
+        <h3>🏆 완성된 정체성 포스터 붙여넣기</h3>
+        <div class="dropzone" id="posterZone" tabindex="0">
+          <div class="dz-text">AI가 만든 정체성 포스터 이미지를 복사한 뒤<br>이 영역을 클릭하고 <b>Ctrl+V</b>로 붙여넣거나,<br>이미지 파일을 끌어다 놓으세요.</div>
+          <img id="posterImg" alt="완성된 정체성 포스터">
+        </div>
+        <p class="mini-note"><b>패들렛 제출 안내</b> · 완성된 정체성 포스터 이미지를 저장한 뒤 패들렛에 올려 주세요.</p>
+      </div>
+    </aside>
+  </main>
+
+  <div class="nav">
+    <a class="prev" href="step3.html">← 이전 단계</a>
+    <a class="next" href="step5.html">다음 단계 →</a>
+  </div>
+  <div class="footer">AI와 함께 떠나는 진로탐험 · STEP4 나의 정체성 포스터</div>
+</div>
+<div class="toast" id="toast">복사되었습니다.</div>
+<script>
+const school = document.getElementById('school');
+const grade = document.getElementById('grade');
+const nameEl = document.getElementById('name');
+const step2 = document.getElementById('step2');
+const extraLine = document.getElementById('extraLine');
+const promptBox = document.getElementById('promptBox');
+const statusEl = document.getElementById('status');
+const missingBox = document.getElementById('missingBox');
+const copyBtn = document.getElementById('copyBtn');
+const toast = document.getElementById('toast');
+let posterStyle = '작은 정보 카드가 격자로 배치된 정체성 지도 스타일';
+let hasCharImage = false;
+
+function formatSchool(v){
+  const s=(v||'').trim(); if(!s) return '';
+  if(/학교$/.test(s)) return s;
+  if(/중$/.test(s)) return s+'학교';
+  return s+'중학교';
+}
+function formatGrade(v){
+  const g=(v||'').trim(); if(!g) return '';
+  if(/학년$/.test(g)) return g;
+  const num = g.match(/\d+/); return num ? num[0]+'학년' : g;
+}
+function compactText(t, n=1600){
+  const s=(t||'').replace(/\s+/g,' ').trim();
+  return s.length>n ? s.slice(0,n)+'…' : s;
+}
+function buildPrompt(){
+  const sch = formatSchool(school.value) || '학교명 미입력';
+  const grd = formatGrade(grade.value) || '학년 미입력';
+  const nm = nameEl.value.trim() || '이름 미입력';
+  const extra = extraLine.value.trim();
+  const data = compactText(step2.value, 1800) || 'STEP2 자기이해 결과가 아직 입력되지 않았습니다.';
+  return `중요: 이 요청은 반드시 첨부한 캐릭터 이미지를 함께 참고해야 합니다.
+첨부한 캐릭터 이미지를 참고하여, 중학생용 「나의 정체성 포스터」를 만들어 주세요.\n\n[학생 정보]\n- 학교: ${sch}\n- 학년: ${grd}\n- 이름: ${nm}\n\n[자기이해 자료]\n${data}\n${extra ? `\n[꼭 넣고 싶은 말]\n${extra}\n` : ''}\n[포스터 제작 조건]\n- 전체 제목은 "AI가 함께 정리한 나의 정체성 포스터" 또는 "나의 정체성 포스터"로 해 주세요.\n- 부제는 "나를 이루는 생각, 강점 그리고 미래" 느낌으로 넣어 주세요.\n- ${posterStyle}로 만들어 주세요.\n- A4 세로 비율 또는 세로형 모바일 포스터 비율로 구성해 주세요.\n- 첨부한 캐릭터와 동일한 인물임을 알아볼 수 있도록 얼굴, 머리 모양, 분위기, 복장 특징은 유지해 주세요.\n- 단, 같은 그림을 복사해 반복하지 말고, 각 카드마다 서로 다른 스티커 일러스트를 그리듯 표현해 주세요.\n- 캐릭터의 표정, 손동작, 시선, 자세, 소품은 카드 내용에 맞게 모두 다르게 표현해 주세요.\n- 예: 강점 칸은 자신감 있는 포즈, 관심 분야 칸은 탐구하는 모습, 좋아하는 것 칸은 즐거운 모습, 응원 메시지 칸은 손을 흔들거나 응원하는 모습.\n- 각 카드의 캐릭터는 배경 없는 PNG 스티커를 붙여 놓은 것처럼 자연스럽게 배치하고, 카드마다 크기와 위치를 조금씩 다르게 해 주세요.\n- 캐릭터는 글상자 안이나 옆에 자연스럽게 배치하되, 글자를 가리지 않게 해 주세요.\n\n[포스터에 포함할 항목]\n1. 프로필 이름\n2. 나를 한 줄로 표현\n3. 대표 강점 5가지\n4. 가치관 3가지\n5. 성격 특징 5가지\n6. 관심 분야 3가지\n7. 추천 진로 분야 3가지\n8. 좋아하는 것\n9. 나를 표현하는 이모지 3개\n10. AI 응원 메시지\n\n[디자인 조건]\n- 밝고 따뜻하며 중학생도 좋아할 만한 세련된 느낌\n- 너무 유치하지 않게, 하지만 귀엽고 친근한 분위기\n- 카드마다 색을 조금씩 다르게 하고, 아이콘과 작은 장식 요소를 넣어 주세요.\n- 글자는 한국어로 선명하게 넣어 주세요.\n- 내용은 너무 길지 않게 요약하고, 한눈에 읽기 쉽게 배치해 주세요.\n- 결과물은 패들렛에 올릴 수 있는 완성된 한 장의 포스터 이미지로 만들어 주세요.\n\n중요: 자기이해 자료에 없는 내용을 과하게 지어내지 말고, 부족한 내용은 자연스럽게 요약하거나 비슷한 표현으로 정리해 주세요.`;
+}
+function update(){
+  promptBox.textContent = buildPrompt();
+  const ready = step2.value.trim().length>20 && hasCharImage;
+  copyBtn.disabled = !ready;
+  statusEl.className = 'status ' + (ready?'ready':'wait');
+  statusEl.textContent = ready ? '복사 가능' : '준비 중';
+  missingBox.style.display = ready ? 'none' : 'block';
+  if(!step2.value.trim() && !hasCharImage) missingBox.textContent = 'STEP2 결과와 캐릭터 이미지가 필요합니다.';
+  else if(!step2.value.trim()) missingBox.textContent = 'STEP2 결과를 붙여넣어 주세요.';
+  else if(!hasCharImage) missingBox.textContent = 'STEP3에서 만든 캐릭터 이미지를 붙여넣어 주세요.';
+}
+function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600)}
+async function copyText(text, btn){
+  try{ await navigator.clipboard.writeText(text); }
+  catch(e){ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+  const old=btn.innerHTML; btn.classList.add('done'); btn.innerHTML='✓ 복사 완료'; setTimeout(()=>{btn.classList.remove('done'); btn.innerHTML=old;},1500);
+  showToast('프롬프트가 복사되었습니다.');
+}
+copyBtn.addEventListener('click',e=>copyText(buildPrompt(), e.currentTarget));
+document.getElementById('refreshBtn').addEventListener('click',()=>{update(); showToast('프롬프트를 새로 정리했습니다.');});
+[school,grade,nameEl,step2,extraLine].forEach(el=>el.addEventListener('input',update));
+document.querySelectorAll('[data-group="posterStyle"] .option').forEach(opt=>{
+  opt.addEventListener('click',()=>{
+    document.querySelectorAll('[data-group="posterStyle"] .option').forEach(o=>o.classList.remove('active'));
+    opt.classList.add('active'); posterStyle=opt.dataset.value; update();
+  });
+});
+function setupDrop(zoneId,imgId,onChange){
+  const dz=document.getElementById(zoneId); const img=document.getElementById(imgId);
+  function setImage(src){img.src=src; dz.classList.add('has-img'); onChange && onChange(true);}
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag'); const file=e.dataTransfer.files&&e.dataTransfer.files[0]; if(file&&file.type.startsWith('image/')){const r=new FileReader();r.onload=()=>setImage(r.result);r.readAsDataURL(file);}});
+  dz.addEventListener('paste',e=>{const items=e.clipboardData&&e.clipboardData.items;if(!items)return;for(const it of items){if(it.type.startsWith('image/')){const file=it.getAsFile();const r=new FileReader();r.onload=()=>setImage(r.result);r.readAsDataURL(file);break;}}});
+  dz.addEventListener('click',()=>dz.focus());
+  return {dz,img,clear(){img.removeAttribute('src'); dz.classList.remove('has-img'); onChange && onChange(false);}};
+}
+const charDrop=setupDrop('charZone','charImg',(v)=>{hasCharImage=v;update();});
+setupDrop('posterZone','posterImg');
+document.getElementById('clearChar').addEventListener('click',()=>{charDrop.clear();});
+update();
+</script>
+</body>
+</html>
