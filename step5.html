@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STEP5 미래 비전보드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#16244d; --blue:#2867e7; --sky:#eaf3ff; --cyan:#35a9ff; --mint:#dff9f3;
+  --ink:#1f2a44; --muted:#7583a4; --line:#dce7f7; --card:#ffffff; --cream:#fff9e8;
+  --purple:#7b61ff; --green:#24b985; --pink:#ff6f91; --orange:#ff9f43; --yellow:#ffd166;
+  --soft:#f7faff; --danger:#ef476f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:radial-gradient(circle at 5% 0%,#eff8ff 0,#f8fbff 38%,#edf3ff 100%);color:var(--ink);padding:22px;min-height:100vh;}
+.wrapper{max-width:1320px;margin:0 auto;}
+.hero{background:linear-gradient(135deg,#13204a,#245fe7 58%,#6cc8ff);border-radius:28px;color:white;padding:28px 34px;box-shadow:0 22px 50px rgba(22,36,77,.22);display:flex;justify-content:space-between;gap:22px;align-items:center;position:relative;overflow:hidden;}
+.hero:before{content:"";position:absolute;right:-80px;top:-120px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.14)}
+.hero:after{content:"";position:absolute;left:38%;bottom:-70px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero h1{font-family:'Jua',sans-serif;font-size:42px;font-weight:400;letter-spacing:-.5px;margin-bottom:8px;position:relative;z-index:1}
+.hero p{font-size:17px;line-height:1.65;opacity:.95;position:relative;z-index:1}
+.badge{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 15px;font-weight:900;margin-bottom:12px;position:relative;z-index:1}
+.home{position:relative;z-index:1;color:white;text-decoration:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:12px 17px;border-radius:14px;font-weight:900;white-space:nowrap}.home:hover{background:rgba(255,255,255,.25)}
+.notice{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 18px;color:#425174;box-shadow:0 10px 28px rgba(27,53,105,.08);display:flex;gap:10px;align-items:flex-start;line-height:1.55;font-size:14px}.notice b{color:var(--navy)}
+.main{display:grid;grid-template-columns:.92fr 1.08fr;gap:22px;margin-top:22px;align-items:start}.panel{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 16px 45px rgba(27,53,105,.11)}
+.panel-title{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-title h2{font-family:'Jua',sans-serif;color:var(--navy);font-weight:400;font-size:28px}.hint{color:var(--muted);font-size:14px;line-height:1.5}.meta{display:grid;grid-template-columns:1.4fr .9fr 1fr;gap:10px;margin-bottom:16px}.field label{display:block;font-size:13px;color:var(--muted);font-weight:900;margin:0 0 6px 4px}.field input,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;background:white;padding:12px 14px;font-family:inherit;font-size:15px;outline:none;transition:.15s}.field textarea{min-height:120px;resize:vertical;line-height:1.65}.field input:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(40,103,231,.09)}
+.section{margin-top:16px;padding-top:16px;border-top:1px dashed #d7e2f5}.section h3{font-family:'Jua',sans-serif;font-size:23px;color:var(--navy);font-weight:400;margin-bottom:10px}.section .small-guide{font-size:13px;color:#66789f;line-height:1.5;margin-bottom:9px}
+.dropzone{border:2px dashed #b9c9e8;border-radius:20px;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);background:#f8fbff;position:relative;overflow:hidden;padding:16px;transition:.16s}.dropzone.drag{background:#eef7ff;border-color:var(--blue)}.dropzone img{max-width:100%;max-height:210px;border-radius:16px;display:none;object-fit:contain}.dropzone.has-img img{display:block}.dropzone.has-img .dz-text{display:none}.clear-btn{margin-top:10px;border:1px solid #d7e4fb;background:#edf3ff;color:var(--navy);border-radius:13px;padding:10px 13px;font-family:inherit;font-weight:900;cursor:pointer}.clear-btn:hover{background:#e2ecff}.mini-note{font-size:13px;color:var(--muted);line-height:1.55;margin-top:8px}.mini-note b{color:var(--navy)}
+.style-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}.style-card{border:1.5px solid var(--line);background:#fff;border-radius:20px;padding:12px;cursor:pointer;transition:.16s;color:#314063}.style-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(40,103,231,.12)}.style-card.active{border-color:var(--blue);box-shadow:0 8px 24px rgba(40,103,231,.18);background:linear-gradient(135deg,#eaf3ff,#fff)}.style-card h4{font-family:'Jua',sans-serif;font-size:22px;font-weight:400;color:var(--navy);margin:8px 0 4px}.style-card p{font-size:13px;line-height:1.45;color:#66789f}.sample{height:112px;border-radius:16px;border:1px solid #dfe8fb;position:relative;overflow:hidden;background:#fff}.sample.scrap{background:#f6ead7}.sample.scrap:before{content:"";position:absolute;inset:10px;background:linear-gradient(135deg,#fff,#fff8ea);border-radius:12px;box-shadow:0 8px 18px rgba(77,55,28,.12);transform:rotate(-2deg)}.sample.scrap .note1{position:absolute;left:14px;top:14px;width:54px;height:34px;background:#ffdbe8;border-radius:6px;transform:rotate(-5deg)}.sample.scrap .note2{position:absolute;right:15px;top:18px;width:58px;height:42px;background:#dff9f3;border-radius:6px;transform:rotate(4deg)}.sample.scrap .photo{position:absolute;left:56px;bottom:11px;width:76px;height:52px;background:#d7e9ff;border:5px solid white;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.sample.desktop{background:#12203c}.sample.desktop .win{position:absolute;background:#fff;border-radius:8px;border:1px solid #d3dcea;box-shadow:0 5px 12px rgba(0,0,0,.16)}.sample.desktop .w1{left:14px;top:13px;width:82px;height:48px}.sample.desktop .w2{right:12px;top:24px;width:68px;height:58px}.sample.desktop .w3{left:44px;bottom:10px;width:104px;height:36px;background:#fff6df}.sample.desktop .bar{height:8px;background:#e8edf7;border-radius:8px 8px 0 0}
+.sample.game{background:#1b2a5d}.sample.game:before{content:"LEVEL UP";position:absolute;left:22px;top:14px;color:#ffd166;font-weight:900;font-size:18px}.sample.game .col{position:absolute;bottom:12px;width:38px;border-radius:8px;border:2px solid #fff;background:#f7faff}.sample.game .c1{left:14px;height:54px}.sample.game .c2{left:60px;height:72px;background:#fff6df}.sample.game .c3{left:106px;height:44px;background:#e5fff7}.sample.game .badge{position:absolute;right:12px;top:14px;background:#ff6f91;color:#fff;border-radius:8px;padding:3px 8px;font-size:11px}
+.sample.planner{background:#f9fbff}.sample.planner:before{content:"";position:absolute;left:14px;top:12px;width:56px;height:88px;background:#fff;border:1px solid #dfe8fb;border-radius:10px}.sample.planner .line{position:absolute;left:82px;height:9px;background:#d9e6fb;border-radius:99px}.sample.planner .l1{top:18px;width:82px}.sample.planner .l2{top:41px;width:64px}.sample.planner .l3{top:64px;width:92px}.sample.planner .dot{position:absolute;left:26px;width:12px;height:12px;border-radius:50%;background:#24b985}.sample.planner .d1{top:24px}.sample.planner .d2{top:50px;background:#ff9f43}.sample.planner .d3{top:76px;background:#7b61ff}
+.option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.option{border:1.5px solid var(--line);background:#fff;border-radius:16px;padding:12px 10px;min-height:54px;display:flex;align-items:center;justify-content:center;text-align:center;gap:7px;cursor:pointer;font-weight:900;color:#314063;transition:.16s;user-select:none}.option:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(40,103,231,.12)}.option.active{background:linear-gradient(135deg,#eaf3ff,#f5fbff);border-color:var(--blue);box-shadow:0 8px 24px rgba(40,103,231,.18);color:var(--navy)}.option .ico{font-size:20px}
+.check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.check{border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-weight:900;color:#314063;cursor:pointer;display:flex;align-items:center;gap:8px}.check.active{border-color:var(--green);background:#eafbf6;color:#11684d}.check .box{width:18px;height:18px;border-radius:5px;border:2px solid #b9c9e8;display:inline-flex;align-items:center;justify-content:center;font-size:12px}.check.active .box{background:var(--green);border-color:var(--green);color:#fff}.prompt-card{background:linear-gradient(180deg,#ffffff,#f6faff);border:1px solid var(--line);border-radius:26px;padding:22px;position:sticky;top:18px;box-shadow:0 18px 44px rgba(27,53,105,.12)}.prompt-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px}.prompt-top h2{font-family:'Jua',sans-serif;font-size:30px;color:var(--navy);font-weight:400}.status{font-size:13px;font-weight:900;color:#fff;background:var(--navy);border-radius:999px;padding:8px 12px;white-space:nowrap}.status.wait{background:#8794b1}.status.ready{background:#18a77a}
+.vision-preview{background:#fff;border:1px solid #dfe8fb;border-radius:22px;padding:14px;margin:12px 0 16px;display:grid;grid-template-columns:1fr 1.4fr;gap:12px;align-items:center}.preview-board{height:150px;border-radius:18px;background:linear-gradient(135deg,#fff9e8,#eaf3ff);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center}.preview-board .mainpic{width:72px;height:72px;border-radius:18px;background:#fff;border:6px solid white;box-shadow:0 10px 24px rgba(27,53,105,.13);display:grid;place-items:center;font-size:38px;z-index:2}.preview-board .memo{position:absolute;background:#fff;border:1px solid #dbe7fb;border-radius:12px;padding:6px 8px;font-size:11px;font-weight:900;color:var(--navy);box-shadow:0 8px 20px rgba(27,53,105,.07)}.preview-board .m1{left:12px;top:16px}.preview-board .m2{right:14px;top:20px}.preview-board .m3{left:18px;bottom:14px}.preview-board .m4{right:16px;bottom:18px}.preview-desc h3{font-family:'Jua',sans-serif;color:var(--navy);font-size:23px;font-weight:400;margin-bottom:8px}.preview-desc p{font-size:13.5px;line-height:1.6;color:#566586}.prompt-box{background:#13204a;color:#f4f8ff;border-radius:18px;padding:17px;line-height:1.7;font-size:14.5px;white-space:pre-wrap;max-height:360px;overflow:auto;border:1px solid rgba(255,255,255,.08)}.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.btn{border:none;border-radius:15px;padding:14px 15px;font-family:inherit;font-size:16px;font-weight:900;cursor:pointer;transition:.14s;display:flex;align-items:center;justify-content:center;gap:8px}.btn.primary{background:var(--navy);color:white}.btn.primary:hover:not(:disabled){background:#22366d}.btn.secondary{background:#edf3ff;color:var(--navy);border:1px solid #d7e4fb}.btn.secondary:hover:not(:disabled){background:#e2ecff}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none!important}.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,36,77,.14)}.btn.done{background:#17a977;color:white}.important-guide{color:#d31818!important;font-weight:900!important;font-size:15px}.important-guide mark{background:#fff1a6;color:#b00020;border-radius:6px;padding:1px 5px}.important-copy{color:#d31818!important;font-weight:900!important;background:#fff6f6;border:1px solid #ffd0d0;border-radius:13px;padding:10px 12px;margin-top:9px}.result-zone{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}.result-zone h3{font-family:'Jua',sans-serif;font-size:22px;color:var(--navy);font-weight:400;margin-bottom:8px}.result-zone .dropzone{min-height:310px}.result-zone .dropzone img{max-height:300px}.nav{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}.nav a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:900;border-radius:15px;padding:14px 18px}.nav .prev{color:var(--navy);background:white;border:1px solid var(--line)}.nav .next{color:white;background:var(--navy);border:1px solid var(--navy)}.nav a:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,36,77,.14)}
+.footer{margin-top:16px;color:var(--muted);font-size:13px;text-align:center}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#13204a;color:white;border-radius:999px;padding:12px 18px;font-weight:900;box-shadow:0 14px 35px rgba(22,36,77,.25);display:none;z-index:999}.toast.show{display:block}
+@media(max-width:1020px){.main{grid-template-columns:1fr}.prompt-card{position:relative;top:0}.meta{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.hero h1{font-size:34px}.style-grid{grid-template-columns:1fr}.vision-preview{grid-template-columns:1fr}}@media(max-width:560px){body{padding:12px}.panel,.hero,.prompt-card{border-radius:20px;padding:18px}.hero h1{font-size:30px}.option-grid,.check-grid,.btn-row{grid-template-columns:1fr}.nav{gap:10px}.nav a{padding:12px 13px}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <section class="hero">
+    <div>
+      <div class="badge">🚀 STEP 5 · Vision Board</div>
+      <h1>미래 비전보드</h1>
+      <p>현재의 나를 바탕으로 미래의 나를 구체적으로 그려 봅니다.<br>STEP3 캐릭터와 STEP4 정체성 포스터를 활용해 나만의 미래 비전보드를 완성해요.</p>
+    </div>
+    <a class="home" href="index.html">🏠 탐험 메인으로</a>
+  </section>
+  <div class="notice"><span>💡</span><div><b>활동 안내</b> · 희망 직업을 하나 정하고, 원하는 비전보드 스타일을 선택하면 생성형 AI에 보낼 프롬프트가 자동으로 완성됩니다.</div></div>
+  <main class="main">
+    <section class="panel">
+      <div class="panel-title"><h2>비전보드 재료 준비하기</h2><span class="hint">미래의 나를 그릴 준비를 합니다.</span></div>
+      <div class="meta">
+        <div class="field"><label>학교(학교명만 입력하세요.)</label><input id="school" placeholder="예) 강서"></div>
+        <div class="field"><label>학년(숫자만 입력하세요.)</label><input id="grade" placeholder="예) 3"></div>
+        <div class="field"><label>이름</label><input id="name" placeholder="예) 홍길동"></div>
+      </div>
+      <div class="section" style="border-top:none;padding-top:0;margin-top:0">
+        <h3>① STEP3 캐릭터 이미지 붙여넣기</h3>
+        <p class="small-guide">미래의 나로 성장할 현재 캐릭터입니다. 생성형 AI에 먼저 첨부하게 됩니다.</p>
+        <div class="dropzone" id="charZone" tabindex="0">
+          <div class="dz-text">STEP3에서 만든 캐릭터 이미지를 복사한 뒤<br>이 영역을 클릭하고 <b>Ctrl+V</b>로 붙여넣거나,<br>이미지 파일을 끌어다 놓으세요.</div>
+          <img id="charImg" alt="STEP3 캐릭터 이미지">
+        </div>
+        <button class="clear-btn" id="clearChar">🖼 캐릭터 이미지 바꿔 넣기</button>
+      </div>
+      <div class="section">
+        <h3>② STEP4 정체성 포스터 붙여넣기</h3>
+        <p class="small-guide">STEP4에서 만든 정체성 포스터를 붙여넣으면, AI가 현재의 강점과 관심을 참고해 미래 비전보드를 만듭니다.</p>
+        <div class="dropzone" id="identityZone" tabindex="0">
+          <div class="dz-text">STEP4 정체성 포스터 이미지를 복사한 뒤<br>이 영역을 클릭하고 <b>Ctrl+V</b>로 붙여넣거나,<br>이미지 파일을 끌어다 놓으세요.</div>
+          <img id="identityImg" alt="STEP4 정체성 포스터">
+        </div>
+        <button class="clear-btn" id="clearIdentity">🪪 정체성 포스터 바꿔 넣기</button>
+      </div>
+      <div class="section">
+        <h3>③ 희망 직업 한 가지 정하기</h3>
+        <p class="small-guide">지금 가장 관심 있는 직업을 하나만 적습니다. 아직 확정하지 않아도 괜찮습니다.</p>
+        <div class="field"><input id="job" placeholder="예) 게임 콘텐츠 기획자, 생명공학 연구원, 반려동물 간호사"></div>
+      </div>
+      <div class="section">
+        <h3>④ 비전보드 스타일 선택</h3>
+        <p class="small-guide">아래 그림은 실제 예시가 아니라, 스타일을 이해하기 위한 간단한 샘플입니다.</p>
+        <div class="style-grid" data-group="visionStyle">
+          <div class="style-card active" data-value="감성 스크랩북 스타일: 종이 메모, 사진, 마스킹테이프, 따뜻한 베이지 색감으로 꾸민 비전보드">
+            <div class="sample scrap"><span class="note1"></span><span class="note2"></span><span class="photo"></span></div>
+            <h4>📒 감성 스크랩북</h4><p>사진, 메모, 테이프로 꿈을 모아 붙인 느낌</p>
+          </div>
+          <div class="style-card" data-value="데스크톱 메모 스타일: 컴퓨터 바탕화면 위에 여러 메모창, 사진, 일정표가 떠 있는 비전보드">
+            <div class="sample desktop"><span class="win w1"><i class="bar"></i></span><span class="win w2"><i class="bar"></i></span><span class="win w3"><i class="bar"></i></span></div>
+            <h4>🖥 데스크톱 메모</h4><p>컴퓨터 화면에 미래 계획 창이 떠 있는 느낌</p>
+          </div>
+          <div class="style-card" data-value="게임 UI 스타일: 레벨업, 퀘스트, 스테이지, 아이콘이 있는 게임 로드맵형 비전보드">
+            <div class="sample game"><span class="badge">QUEST</span><span class="col c1"></span><span class="col c2"></span><span class="col c3"></span></div>
+            <h4>🎮 게임 UI</h4><p>레벨업, 퀘스트, 미션 카드로 성장 과정을 표현</p>
+          </div>
+          <div class="style-card" data-value="심플 플래너 스타일: 깔끔한 노트, 체크리스트, 달력, 로드맵으로 정리한 비전보드">
+            <div class="sample planner"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="line l1"></span><span class="line l2"></span><span class="line l3"></span></div>
+            <h4>📅 심플 플래너</h4><p>계획표와 체크리스트처럼 또렷하게 정리</p>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h3>⑤ 미래의 나 중심 장면</h3>
+        <div class="option-grid" data-group="futureScene">
+          <div class="option active" data-value="희망 직업 현장에서 전문적으로 일하는 모습"><span class="ico">💼</span>일하는 모습</div>
+          <div class="option" data-value="전문 지식과 기술을 공부하며 성장하는 모습"><span class="ico">📚</span>공부하는 모습</div>
+          <div class="option" data-value="작품이나 결과물을 직접 만드는 모습"><span class="ico">🎨</span>만드는 모습</div>
+          <div class="option" data-value="사람들 앞에서 발표하거나 설명하는 모습"><span class="ico">🎤</span>발표하는 모습</div>
+          <div class="option" data-value="연구실이나 작업실에서 탐구하는 모습"><span class="ico">🔬</span>연구하는 모습</div>
+          <div class="option" data-value="팀원들과 함께 협력하여 프로젝트를 진행하는 모습"><span class="ico">🤝</span>협력하는 모습</div>
+        </div>
+      </div>
+      <div class="section">
+        <h3>⑥ 넣고 싶은 요소</h3>
+        <p class="small-guide">기본으로 모두 선택되어 있습니다. 빼고 싶은 것은 한 번 더 눌러 해제하세요.</p>
+        <div class="check-grid">
+          <div class="check active" data-key="dreamWorkplace"><span class="box">✓</span>꿈의 직장</div>
+          <div class="check active" data-key="roadmap"><span class="box">✓</span>성장 로드맵</div>
+          <div class="check active" data-key="study"><span class="box">✓</span>필요한 공부</div>
+          <div class="check active" data-key="activity"><span class="box">✓</span>추천 활동</div>
+          <div class="check active" data-key="tools"><span class="box">✓</span>사용 도구</div>
+          <div class="check active" data-key="today"><span class="box">✓</span>오늘부터 할 일</div>
+        </div>
+      </div>
+      <div class="section">
+        <h3>⑦ AI에게 전하고 싶은 한마디</h3>
+        <p class="small-guide">비워 두어도 됩니다. 미래의 나에 대해 꼭 넣고 싶은 마음이 있으면 한 문장만 적으세요.</p>
+        <div class="field"><input id="message" placeholder="예) 사람들에게 즐거움을 주는 게임을 만들고 싶어요."></div>
+      </div>
+    </section>
+    <aside class="prompt-card">
+      <div class="prompt-top">
+        <div><h2>AI에게 보낼 프롬프트</h2><p class="hint important-guide">⚠️ 반드시 STEP3 캐릭터 이미지와 STEP4 정체성 포스터를 <mark>먼저</mark> 첨부한 후 아래 프롬프트를 붙여넣으세요.</p></div>
+        <div class="status wait" id="status">준비 중</div>
+      </div>
+      <div class="vision-preview">
+        <div class="preview-board"><div class="memo m1">꿈</div><div class="memo m2">로드맵</div><div class="memo m3">오늘의 실천</div><div class="memo m4">도구</div><div class="mainpic">🚀</div></div>
+        <div class="preview-desc"><h3>미래 비전보드는 어떤 이미지인가요?</h3><p>현재 캐릭터를 바탕으로 미래의 내가 일하고 성장하는 장면을 중심에 두고, 주변에 공부·활동·로드맵·오늘의 실천을 메모처럼 배치한 한 장의 이미지입니다.</p></div>
+      </div>
+      <div class="prompt-box" id="promptBox"></div>
+      <div class="btn-row"><button class="btn primary" id="copyBtn" disabled>📋 프롬프트 복사</button><button class="btn secondary" id="refreshBtn">🔄 프롬프트 새로고침</button></div>
+      <p class="important-copy">❗이미지를 첨부하지 않으면 캐릭터와 정체성 포스터 내용이 비전보드에 반영되지 않습니다.</p>
+      <div class="result-zone"><h3>🏆 완성된 비전보드 붙여넣기</h3><div class="dropzone" id="visionZone" tabindex="0"><div class="dz-text">AI가 만든 미래 비전보드 이미지를 복사한 뒤<br>이 영역을 클릭하고 <b>Ctrl+V</b>로 붙여넣거나,<br>이미지 파일을 끌어다 놓으세요.</div><img id="visionImg" alt="완성된 미래 비전보드"></div><p class="mini-note"><b>패들렛 제출 안내</b> · 완성된 미래 비전보드 이미지를 저장한 뒤 패들렛에 올려 주세요.</p></div>
+    </aside>
+  </main>
+  <div class="nav"><a class="prev" href="step4.html">← 이전 단계</a><a class="next" href="index.html">탐험 메인으로 →</a></div>
+  <div class="footer">AI와 함께 떠나는 진로탐험 · STEP5 미래 비전보드</div>
+</div>
+<div class="toast" id="toast">복사되었습니다.</div>
+<script>
+const school=document.getElementById('school'), grade=document.getElementById('grade'), nameEl=document.getElementById('name');
+const job=document.getElementById('job'), message=document.getElementById('message'), promptBox=document.getElementById('promptBox');
+const statusEl=document.getElementById('status'), copyBtn=document.getElementById('copyBtn'), toast=document.getElementById('toast');
+let hasCharImage=false, hasIdentityImage=false;
+let visionStyle='감성 스크랩북 스타일: 종이 메모, 사진, 마스킹테이프, 따뜻한 베이지 색감으로 꾸민 비전보드';
+let futureScene='희망 직업 현장에서 전문적으로 일하는 모습';
+const elements={dreamWorkplace:true,roadmap:true,study:true,activity:true,tools:true,today:true};
+function formatSchool(v){const s=(v||'').trim(); if(!s)return ''; if(/학교$/.test(s))return s; if(/중$/.test(s))return s+'학교'; return s+'중학교'}
+function formatGrade(v){const g=(v||'').trim(); if(!g)return ''; if(/학년$/.test(g))return g; const n=g.match(/\d+/); return n?n[0]+'학년':g}
+function selectedElements(){const labels={dreamWorkplace:'꿈의 직장 또는 미래 작업 공간',roadmap:'고1부터 취업 준비까지 이어지는 성장 로드맵',study:'필요한 공부와 역량',activity:'추천 활동과 경험',tools:'미래 직업에서 사용할 도구와 기술',today:'오늘부터 실천할 작은 행동'};return Object.keys(elements).filter(k=>elements[k]).map(k=>'- '+labels[k]).join('\n')||'- 미래의 나를 표현하는 핵심 요소'}
+function buildPrompt(){
+ const sch=formatSchool(school.value)||'학교명 미입력', grd=formatGrade(grade.value)||'학년 미입력', nm=nameEl.value.trim()||'이름 미입력';
+ const jb=job.value.trim()||'희망 직업 미입력', msg=message.value.trim();
+ return `중요: 이 요청은 반드시 첨부한 두 이미지를 함께 참고해야 합니다.\n1) STEP3에서 만든 캐릭터 이미지\n2) STEP4에서 만든 정체성 포스터 이미지\n\n첨부한 캐릭터와 정체성 포스터를 바탕으로, 중학생용 「미래 비전보드」 이미지를 만들어 주세요.\n\n[학생 정보]\n- 학교: ${sch}\n- 학년: ${grd}\n- 이름: ${nm}\n\n[희망 직업]\n${jb}\n${msg?`\n[미래의 나에게 담고 싶은 한마디]\n${msg}\n`:''}\n[비전보드 방향]\n- STEP3 캐릭터와 동일한 인물임을 알아볼 수 있도록 얼굴, 머리 모양, 분위기, 복장 특징을 유지해 주세요.\n- 단, 미래의 나로 성장한 모습이므로 조금 더 성숙하고 전문적인 느낌을 자연스럽게 더해 주세요.\n- STEP4 정체성 포스터에 담긴 강점, 관심 분야, 가치관, 성격 특징을 참고해 비전보드 내용을 구성해 주세요.\n- 중심 장면은 "${futureScene}"입니다.\n- 전체 스타일은 "${visionStyle}"입니다.\n\n[비전보드에 포함할 요소]\n${selectedElements()}\n\n[구성 요청]\n- 희망 직업과 관련된 미래의 나를 중심 이미지로 크게 배치해 주세요.\n- 주변에는 메모, 사진, 체크리스트, 로드맵, 작은 아이콘을 배치해 주세요.\n- 고1, 고2, 고3, 대학 또는 취업 준비 단계가 자연스럽게 보이도록 성장 흐름을 넣어 주세요.\n- 필요한 공부, 추천 활동, 자격증 또는 준비 경험, 포트폴리오, AI 활용 능력, 오늘부터 할 일을 간단히 정리해 주세요.\n- 글자는 한국어로 선명하게 넣고, 너무 긴 문장은 짧게 요약해 주세요.\n- 패들렛에 올릴 수 있는 완성된 한 장의 비전보드 이미지로 만들어 주세요.\n\n[디자인 조건]\n- 중학생도 좋아할 만한 세련된 느낌\n- 너무 유치하지 않지만 따뜻하고 희망적인 분위기\n- 캐릭터와 메모, 사진, 아이콘이 조화롭게 배치된 비전보드\n- 결과물은 가로형 또는 세로형 모두 가능하지만, 한눈에 읽기 쉬운 구도\n\n중요: 학생의 현재 정체성 포스터 내용을 과하게 왜곡하지 말고, 희망 직업과 연결하여 자연스럽게 미래 계획으로 확장해 주세요.`;
+}
+function update(){promptBox.textContent=buildPrompt(); const ready=hasCharImage&&hasIdentityImage&&job.value.trim().length>1; copyBtn.disabled=!ready; statusEl.className='status '+(ready?'ready':'wait'); statusEl.textContent=ready?'복사 가능':'준비 중'}
+function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600)}
+async function copyText(text,btn){try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const old=btn.innerHTML;btn.classList.add('done');btn.innerHTML='✓ 복사 완료';setTimeout(()=>{btn.classList.remove('done');btn.innerHTML=old},1500);showToast('프롬프트가 복사되었습니다.')}
+copyBtn.addEventListener('click',e=>copyText(buildPrompt(),e.currentTarget));
+document.getElementById('refreshBtn').addEventListener('click',()=>{update();showToast('프롬프트를 새로 정리했습니다.')});
+[school,grade,nameEl,job,message].forEach(el=>el.addEventListener('input',update));
+document.querySelectorAll('.style-card').forEach(card=>card.addEventListener('click',()=>{document.querySelectorAll('.style-card').forEach(c=>c.classList.remove('active'));card.classList.add('active');visionStyle=card.dataset.value;update()}));
+document.querySelectorAll('[data-group="futureScene"] .option').forEach(opt=>opt.addEventListener('click',()=>{document.querySelectorAll('[data-group="futureScene"] .option').forEach(o=>o.classList.remove('active'));opt.classList.add('active');futureScene=opt.dataset.value;update()}));
+document.querySelectorAll('.check').forEach(ch=>ch.addEventListener('click',()=>{ch.classList.toggle('active');const k=ch.dataset.key;elements[k]=ch.classList.contains('active');ch.querySelector('.box').textContent=elements[k]?'✓':'';update()}));
+function setupDrop(zoneId,imgId,onChange){const dz=document.getElementById(zoneId), img=document.getElementById(imgId);function setImage(src){img.src=src;dz.classList.add('has-img');onChange&&onChange(true)}dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag')});dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag');const file=e.dataTransfer.files&&e.dataTransfer.files[0];if(file&&file.type.startsWith('image/')){const r=new FileReader();r.onload=()=>setImage(r.result);r.readAsDataURL(file)}});dz.addEventListener('paste',e=>{const items=e.clipboardData&&e.clipboardData.items;if(!items)return;for(const it of items){if(it.type.startsWith('image/')){const file=it.getAsFile();const r=new FileReader();r.onload=()=>setImage(r.result);r.readAsDataURL(file);break}}});dz.addEventListener('click',()=>dz.focus());return{clear(){img.removeAttribute('src');dz.classList.remove('has-img');onChange&&onChange(false)}}}
+const charDrop=setupDrop('charZone','charImg',v=>{hasCharImage=v;update()});
+const idDrop=setupDrop('identityZone','identityImg',v=>{hasIdentityImage=v;update()});
+setupDrop('visionZone','visionImg');
+document.getElementById('clearChar').addEventListener('click',()=>charDrop.clear());
+document.getElementById('clearIdentity').addEventListener('click',()=>idDrop.clear());
+update();
+</script>
+</body>
+</html>
