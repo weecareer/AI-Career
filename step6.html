@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STEP6 나의 현재와 미래 영상</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#16244d; --blue:#2867e7; --sky:#eaf3ff; --cyan:#35a9ff; --mint:#dff9f3;
+  --ink:#1f2a44; --muted:#7583a4; --line:#dce7f7; --card:#ffffff; --cream:#fff9e8;
+  --purple:#7b61ff; --green:#24b985; --pink:#ff6f91; --orange:#ff9f43; --yellow:#ffd166;
+  --soft:#f7faff; --danger:#ef476f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:radial-gradient(circle at 5% 0%,#eff8ff 0,#f8fbff 38%,#edf3ff 100%);color:var(--ink);padding:22px;min-height:100vh}
+.wrapper{max-width:1320px;margin:0 auto}
+.hero{background:linear-gradient(135deg,#13204a,#245fe7 58%,#6cc8ff);border-radius:28px;color:white;padding:28px 34px;box-shadow:0 22px 50px rgba(22,36,77,.22);display:flex;justify-content:space-between;gap:22px;align-items:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;right:-80px;top:-120px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.14)}
+.hero:after{content:"";position:absolute;left:38%;bottom:-70px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero h1{font-family:'Jua',sans-serif;font-size:42px;font-weight:400;letter-spacing:-.5px;margin-bottom:8px;position:relative;z-index:1}
+.hero p{font-size:17px;line-height:1.65;opacity:.96;position:relative;z-index:1}
+.badge{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 15px;font-weight:900;margin-bottom:12px;position:relative;z-index:1}
+.home{position:relative;z-index:1;color:white;text-decoration:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:12px 17px;border-radius:14px;font-weight:900;white-space:nowrap}.home:hover{background:rgba(255,255,255,.25)}
+.notice{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 18px;color:#425174;box-shadow:0 10px 28px rgba(27,53,105,.08);display:flex;gap:10px;align-items:flex-start;line-height:1.55;font-size:14px}.notice b{color:var(--navy)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 13px;box-shadow:0 8px 20px rgba(27,53,105,.06);font-size:13px;color:#536382;line-height:1.45}.flow-step b{display:block;color:var(--navy);font-size:14px;margin-bottom:3px}
+.main{display:grid;grid-template-columns:.94fr 1.06fr;gap:22px;margin-top:22px;align-items:start}.panel{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 16px 45px rgba(27,53,105,.11)}
+.panel-title{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-title h2{font-family:'Jua',sans-serif;color:var(--navy);font-weight:400;font-size:28px}.hint{color:var(--muted);font-size:14px;line-height:1.5}.meta{display:grid;grid-template-columns:1.4fr .9fr 1fr;gap:10px;margin-bottom:16px}.field label{display:block;font-size:13px;color:var(--muted);font-weight:900;margin:0 0 6px 4px}.field input,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;background:white;padding:12px 14px;font-family:inherit;font-size:15px;outline:none;transition:.15s}.field textarea{min-height:94px;resize:vertical;line-height:1.65}.field input:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(40,103,231,.09)}
+.section{margin-top:16px;padding-top:16px;border-top:1px dashed #d7e2f5}.section h3{font-family:'Jua',sans-serif;font-size:23px;color:var(--navy);font-weight:400;margin-bottom:10px}.small-guide{font-size:13px;color:#66789f;line-height:1.55;margin-bottom:9px}.small-guide b{color:var(--navy)}
+.dropzone{border:2px dashed #b9c9e8;border-radius:20px;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);background:#f8fbff;position:relative;overflow:hidden;padding:16px;transition:.16s}.dropzone.drag{background:#eef7ff;border-color:var(--blue)}.dropzone img{max-width:100%;max-height:210px;border-radius:16px;display:none;object-fit:contain}.dropzone.has-img img{display:block}.dropzone.has-img .dz-text{display:none}.clear-btn{margin-top:10px;border:1px solid #d7e4fb;background:#edf3ff;color:var(--navy);border-radius:13px;padding:10px 13px;font-family:inherit;font-weight:900;cursor:pointer}.clear-btn:hover{background:#e2ecff}
+.option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.option{border:1.5px solid var(--line);background:#fff;border-radius:16px;padding:12px 10px;min-height:54px;display:flex;align-items:center;justify-content:center;text-align:center;gap:7px;cursor:pointer;font-weight:900;color:#314063;transition:.16s;user-select:none}.option:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(40,103,231,.12)}.option.active{background:linear-gradient(135deg,#eaf3ff,#f5fbff);border-color:var(--blue);box-shadow:0 8px 24px rgba(40,103,231,.18);color:var(--navy)}.option .ico{font-size:20px}
+.story-card{background:#f8fbff;border:1px solid #dfe9fb;border-radius:18px;padding:14px;margin-top:10px}.story-card strong{color:var(--navy)}
+.prompt-card{background:linear-gradient(180deg,#ffffff,#f6faff);border:1px solid var(--line);border-radius:26px;padding:22px;position:sticky;top:18px;box-shadow:0 18px 44px rgba(27,53,105,.12)}.prompt-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px}.prompt-top h2{font-family:'Jua',sans-serif;font-size:30px;color:var(--navy);font-weight:400}.status{font-size:13px;font-weight:900;color:#fff;background:#8794b1;border-radius:999px;padding:8px 12px;white-space:nowrap}.status.ready{background:#18a77a}
+.scene-tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}.tab{border:1px solid #d9e5f8;background:#f3f7ff;color:#536382;border-radius:13px;padding:10px 8px;font-family:inherit;font-weight:900;cursor:pointer}.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.prompt-box{background:#13204a;color:#f4f8ff;border-radius:18px;padding:17px;line-height:1.7;font-size:14.3px;white-space:pre-wrap;min-height:310px;max-height:410px;overflow:auto;border:1px solid rgba(255,255,255,.08)}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.btn{border:none;border-radius:15px;padding:14px 15px;font-family:inherit;font-size:16px;font-weight:900;cursor:pointer;transition:.14s;display:flex;align-items:center;justify-content:center;gap:8px}.btn.primary{background:var(--navy);color:white}.btn.primary:hover:not(:disabled){background:#22366d}.btn.secondary{background:#edf3ff;color:var(--navy);border:1px solid #d7e4fb}.btn.secondary:hover:not(:disabled){background:#e2ecff}.btn:disabled{opacity:.45;cursor:not-allowed}.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,36,77,.14)}.btn.done{background:#17a977;color:white}
+.google-guide{margin-top:15px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:15px}.google-guide h3{font-family:'Jua',sans-serif;font-size:23px;color:var(--navy);font-weight:400;margin-bottom:9px}.guide-list{display:grid;gap:8px}.guide-item{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;background:#f8fbff;border:1px solid #e1eafa;border-radius:14px;padding:10px}.guide-no{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff;font-weight:900}.guide-item p{font-size:13px;line-height:1.5;color:#556584}.guide-item b{color:var(--navy)}
+.open-btn{display:flex;width:100%;margin-top:10px;align-items:center;justify-content:center;gap:8px;text-decoration:none;background:#fff;border:1.5px solid var(--blue);color:var(--blue);border-radius:14px;padding:12px;font-weight:900}.open-btn:hover{background:#eef5ff}
+.caution{color:#c62828;font-size:13px;font-weight:900;line-height:1.55;margin-top:10px}.result-zone{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}.result-zone h3{font-family:'Jua',sans-serif;font-size:22px;color:var(--navy);font-weight:400;margin-bottom:8px}.video-drop{border:2px dashed #b9c9e8;border-radius:18px;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);background:#f8fbff;position:relative;overflow:hidden;padding:14px}.video-drop video{display:none;width:100%;max-height:340px;border-radius:14px;background:#000}.video-drop.has-video video{display:block}.video-drop.has-video .dz-text{display:none}.mini-note{font-size:13px;color:var(--muted);line-height:1.55;margin-top:8px}.mini-note b{color:var(--navy)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}.nav a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:900;border-radius:15px;padding:14px 18px}.nav .prev{color:var(--navy);background:white;border:1px solid var(--line)}.nav .next{color:white;background:var(--navy);border:1px solid var(--navy)}.nav a:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,36,77,.14)}
+.footer{margin-top:16px;color:var(--muted);font-size:13px;text-align:center}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#13204a;color:white;border-radius:999px;padding:12px 18px;font-weight:900;box-shadow:0 14px 35px rgba(22,36,77,.25);display:none;z-index:999}.toast.show{display:block}
+@media(max-width:1020px){.main{grid-template-columns:1fr}.prompt-card{position:relative;top:0}.meta{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.hero h1{font-size:34px}.flow{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){body{padding:12px}.panel,.hero,.prompt-card{border-radius:20px;padding:18px}.hero h1{font-size:30px}.option-grid,.btn-row,.scene-tabs,.flow{grid-template-columns:1fr}.nav{gap:10px}.nav a{padding:12px 13px}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <section class="hero">
+    <div>
+      <div class="badge">🎬 STEP 6 · Current to Future</div>
+      <h1>나의 현재와 미래 영상</h1>
+      <p>지금 꿈을 준비하는 나와, 꿈을 이루어 활약하는 미래의 나를<br><b>두 장면의 짧은 영상</b>으로 완성해 봅시다.</p>
+    </div>
+    <a class="home" href="index.html">🏠 탐험 메인으로</a>
+  </section>
+
+  <div class="notice"><span>💡</span><div><b>활동 안내</b> · STEP3에서 만든 캐릭터를 두 장면에 공통으로 사용합니다. 장면 1은 <b>현재의 나</b>, 장면 2는 <b>꿈을 이룬 미래의 나</b>입니다. 두 클립을 Google Vids에서 이어 붙여 한 편의 영상으로 완성합니다.</div></div>
+  <div class="flow">
+    <div class="flow-step"><b>① 캐릭터 준비</b>STEP3 이미지를 붙여넣기</div>
+    <div class="flow-step"><b>② 이야기 정하기</b>현재 노력과 미래 직업 입력</div>
+    <div class="flow-step"><b>③ 두 장면 생성</b>각 프롬프트로 영상 만들기</div>
+    <div class="flow-step"><b>④ 영상 완성</b>이어 붙이고 패들렛 제출</div>
+  </div>
+
+  <main class="main">
+    <section class="panel">
+      <div class="panel-title"><h2>영상 이야기 준비하기</h2><span class="hint">긴 글보다 구체적인 행동 한 가지가 좋아요.</span></div>
+      <div class="meta">
+        <div class="field"><label>학교(학교명만 입력하세요.)</label><input id="school" placeholder="예) 강서"></div>
+        <div class="field"><label>학년(숫자만 입력하세요.)</label><input id="grade" placeholder="예) 3"></div>
+        <div class="field"><label>이름</label><input id="name" placeholder="예) 홍길동"></div>
+      </div>
+
+      <div class="section" style="border-top:none;padding-top:0;margin-top:0">
+        <h3>① STEP3 캐릭터 이미지 붙여넣기</h3>
+        <p class="small-guide">현재 장면과 미래 장면 모두 이 캐릭터를 참고합니다. 얼굴과 머리 모양이 잘 보이는 이미지를 사용하세요.</p>
+        <div class="dropzone" id="charZone" tabindex="0">
+          <div class="dz-text">STEP3 캐릭터 이미지를 복사한 뒤<br>이 영역을 클릭하고 <b>Ctrl+V</b>로 붙여넣거나,<br>이미지 파일을 끌어다 놓으세요.</div>
+          <img id="charImg" alt="STEP3 캐릭터 이미지">
+        </div>
+        <button class="clear-btn" id="clearChar">🖼 캐릭터 이미지 바꿔 넣기</button>
+      </div>
+
+      <div class="section">
+        <h3>② 이번 영상에서 표현할 직업</h3>
+        <p class="small-guide"><b>STEP2에서 AI가 추천한 직업을 참고</b>해도 좋고, 원래 꿈꾸던 직업을 적어도 좋습니다. 최종 선택은 내가 합니다.</p>
+        <div class="field"><input id="job" placeholder="예) 중학교 수학 선생님"></div>
+      </div>
+
+      <div class="section">
+        <h3>③ 현재의 나는 무엇을 하고 있나요?</h3>
+        <p class="small-guide">꿈을 준비하는 지금의 모습을 한 가지 행동으로 적으세요.</p>
+        <div class="field"><input id="currentAction" placeholder="예) 교실에서 수학 문제를 풀고 친구에게 풀이를 설명한다"></div>
+      </div>
+
+      <div class="section">
+        <h3>④ 미래의 나는 어떤 일을 하고 있나요?</h3>
+        <p class="small-guide">희망 직업의 대표 활동을 한 장면으로 적으세요. ‘성장한다’보다 실제 행동을 쓰면 영상이 자연스럽습니다.</p>
+        <div class="field"><input id="futureAction" placeholder="예) 칠판 앞에서 학생들에게 수학 개념을 친절하게 설명한다"></div>
+      </div>
+
+      <div class="section">
+        <h3>⑤ 영상 분위기</h3>
+        <div class="option-grid" data-group="mood">
+          <div class="option active" data-value="따뜻하고 희망적인 시네마틱 분위기"><span class="ico">🌤️</span>따뜻한 영화</div>
+          <div class="option" data-value="밝고 자연스러운 청소년 브이로그 분위기"><span class="ico">📹</span>밝은 브이로그</div>
+          <div class="option" data-value="차분하고 진정성 있는 다큐멘터리 분위기"><span class="ico">🎞️</span>차분한 다큐</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>⑥ 영상에 넣을 짧은 내레이션</h3>
+        <p class="small-guide">각 장면에서 읽을 한 문장입니다. 비워 두면 자동 문장이 만들어집니다.</p>
+        <div class="field"><label>현재 장면</label><input id="narr1" placeholder="예) 지금의 나는 수학을 배우며 꿈을 준비하고 있다."></div>
+        <div class="field" style="margin-top:9px"><label>미래 장면</label><input id="narr2" placeholder="예) 미래의 나는 학생들과 함께 성장하는 수학 선생님이 되어 있다."></div>
+      </div>
+    </section>
+
+    <aside class="prompt-card">
+      <div class="prompt-top">
+        <div><h2>두 장면 영상 기획서</h2><p class="hint">장면별 프롬프트를 따로 복사할 수 있습니다.</p></div>
+        <div class="status" id="status">준비 중</div>
+      </div>
+
+      <div class="scene-tabs">
+        <button class="tab active" data-tab="scene1">장면 1 · 현재</button>
+        <button class="tab" data-tab="scene2">장면 2 · 미래</button>
+        <button class="tab" data-tab="all">전체 기획서</button>
+      </div>
+      <div class="prompt-box" id="promptBox"></div>
+      <div class="btn-row">
+        <button class="btn primary" id="copyBtn" disabled>📋 현재 내용 복사</button>
+        <button class="btn secondary" id="refreshBtn">🔄 프롬프트 새로고침</button>
+      </div>
+      <p class="caution">❗Google Vids에서 두 장면을 만들 때 STEP3 캐릭터 이미지를 각각 다시 첨부해야 같은 인물로 이어질 가능성이 높아집니다.</p>
+
+      <div class="google-guide">
+        <h3>🎥 Google Vids에서 완성하기</h3>
+        <div class="guide-list">
+          <div class="guide-item"><span class="guide-no">1</span><p><b>Google Vids 열기</b><br>새 영상에서 Veo 영상 생성 기능을 엽니다.</p></div>
+          <div class="guide-item"><span class="guide-no">2</span><p><b>장면 1 만들기</b><br>STEP3 캐릭터 이미지를 첨부하고 ‘현재’ 프롬프트를 붙여넣어 클립을 생성합니다.</p></div>
+          <div class="guide-item"><span class="guide-no">3</span><p><b>장면 2 만들기</b><br>같은 캐릭터 이미지를 다시 첨부하고 ‘미래’ 프롬프트로 두 번째 클립을 생성합니다.</p></div>
+          <div class="guide-item"><span class="guide-no">4</span><p><b>두 클립 이어 붙이기</b><br>타임라인에 현재 → 미래 순서로 놓고, 장면 사이에 부드러운 전환을 넣습니다.</p></div>
+          <div class="guide-item"><span class="guide-no">5</span><p><b>내레이션과 자막</b><br>짧은 문장을 직접 녹음하거나 자막으로 추가한 뒤 영상을 저장합니다.</p></div>
+        </div>
+        <a class="open-btn" href="https://vids.new" target="_blank" rel="noopener">▶ Google Vids 열기</a>
+        <p class="mini-note">※ 계정에 따라 Veo 메뉴 이름이나 사용 가능 횟수가 다르게 보일 수 있습니다.</p>
+      </div>
+
+      <div class="result-zone">
+        <h3>🏆 완성한 영상 확인하기</h3>
+        <div class="video-drop" id="videoZone" tabindex="0">
+          <div class="dz-text">완성한 MP4 파일을 이 영역으로 끌어다 놓거나<br>클릭한 뒤 파일을 선택하세요.</div>
+          <video id="resultVideo" controls></video>
+          <input type="file" id="videoFile" accept="video/*" hidden>
+        </div>
+        <p class="mini-note"><b>패들렛 제출 안내</b> · 완성한 현재와 미래 영상을 저장한 뒤 패들렛에 올려 주세요.</p>
+      </div>
+    </aside>
+  </main>
+
+  <div class="nav">
+    <a class="prev" href="step5.html">← 이전 단계</a>
+    <a class="next" href="index.html">탐험 마무리 →</a>
+  </div>
+  <div class="footer">AI와 함께 떠나는 진로탐험 · STEP6 나의 현재와 미래 영상</div>
+</div>
+<div class="toast" id="toast">복사되었습니다.</div>
+<script>
+const school=document.getElementById('school');
+const grade=document.getElementById('grade');
+const nameEl=document.getElementById('name');
+const job=document.getElementById('job');
+const currentAction=document.getElementById('currentAction');
+const futureAction=document.getElementById('futureAction');
+const narr1=document.getElementById('narr1');
+const narr2=document.getElementById('narr2');
+const promptBox=document.getElementById('promptBox');
+const copyBtn=document.getElementById('copyBtn');
+const statusEl=document.getElementById('status');
+const toast=document.getElementById('toast');
+let mood='따뜻하고 희망적인 시네마틱 분위기';
+let activeTab='scene1';
+let hasCharImage=false;
+
+function formatSchool(v){const s=(v||'').trim();if(!s)return '';if(/학교$/.test(s))return s;if(/중$/.test(s))return s+'학교';return s+'중학교'}
+function formatGrade(v){const g=(v||'').trim();if(!g)return '';if(/학년$/.test(g))return g;const n=g.match(/\d+/);return n?n[0]+'학년':g}
+function currentNarration(){return narr1.value.trim()||`지금의 나는 ${currentAction.value.trim()||'꿈을 향해 차근차근 준비하고 있다'}.`}
+function futureNarration(){return narr2.value.trim()||`미래의 나는 ${job.value.trim()||'꿈꾸는 직업인'}이 되어 내가 좋아하는 일을 하며 성장하고 있다.`}
+function commonPerson(){
+  return `첨부한 STEP3 캐릭터와 동일한 인물로 표현해 주세요. 얼굴, 눈, 머리 모양, 안경 유무와 전체적인 인상을 유지하고 다른 사람으로 바뀌지 않게 해 주세요.`;
+}
+function scene1Prompt(){
+  const action=currentAction.value.trim()||'[현재의 나가 하는 행동 입력]';
+  return `[장면 1 · 현재의 나]\n${commonPerson()}\n\n중학교 학생인 현재의 내가 ${action}.\n교복 또는 첨부 이미지의 옷차림을 자연스럽게 유지하고, 꿈을 준비하는 성실하고 집중한 모습으로 표현해 주세요.\n카메라는 공간을 짧게 보여준 뒤 인물에게 천천히 가까워집니다. 인물은 손과 시선을 자연스럽게 움직이고, 주변 사물도 아주 살짝 움직입니다.\n${mood}, 자연스러운 조명, 부드러운 카메라 움직임, 8초 분량의 영상 클립, 글자와 자막은 넣지 마세요.\n\n[내레이션]\n${currentNarration()}`;
+}
+function scene2Prompt(){
+  const j=job.value.trim()||'[희망 직업 입력]';
+  const action=futureAction.value.trim()||'[미래의 직업 활동 입력]';
+  return `[장면 2 · 미래의 나]\n${commonPerson()}\n\n같은 인물이 시간이 지나 ${j}으로 일하는 미래의 모습입니다. 얼굴과 헤어스타일의 특징은 유지하되, 중학생 캐릭터가 자연스럽게 성장한 젊은 성인의 모습으로 표현해 주세요.\n미래의 나는 ${action}. 직업에 어울리는 공간, 복장, 도구를 자연스럽게 구성해 주세요.\n표정은 현재 장면보다 조금 더 자신감 있고 행복하게 표현하고, 주변 사람들과 자연스럽게 소통하게 해 주세요.\n카메라는 천천히 앞으로 이동하며 주인공의 직업 활동을 또렷하게 보여 줍니다.\n${mood}, 자연스러운 조명, 부드러운 카메라 움직임, 8초 분량의 영상 클립, 글자와 자막은 넣지 마세요.\n\n[내레이션]\n${futureNarration()}`;
+}
+function allPrompt(){
+  const sch=formatSchool(school.value)||'학교명 미입력';
+  const grd=formatGrade(grade.value)||'학년 미입력';
+  const nm=nameEl.value.trim()||'이름 미입력';
+  return `「나의 현재와 미래」 2장면 영상 기획서\n학생: ${sch} ${grd} ${nm}\n희망 직업: ${job.value.trim()||'미입력'}\n\n${scene1Prompt()}\n\n────────────────────\n\n${scene2Prompt()}\n\n[편집 순서]\n1. 장면 1과 장면 2를 현재 → 미래 순서로 배치합니다.\n2. 두 장면 사이에 부드러운 디졸브 전환을 넣습니다.\n3. 각 장면의 내레이션을 직접 녹음하거나 자막으로 넣습니다.\n4. 전체 영상은 약 16~20초로 완성합니다.`;
+}
+function activeText(){return activeTab==='scene1'?scene1Prompt():activeTab==='scene2'?scene2Prompt():allPrompt()}
+function update(){
+  promptBox.textContent=activeText();
+  const ready=hasCharImage&&job.value.trim()&&currentAction.value.trim()&&futureAction.value.trim();
+  copyBtn.disabled=!ready;
+  statusEl.className='status'+(ready?' ready':'');
+  statusEl.textContent=ready?'복사 가능':'준비 중';
+}
+function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600)}
+async function copyText(text,btn){
+  try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}
+  const old=btn.innerHTML;btn.classList.add('done');btn.innerHTML='✓ 복사 완료';setTimeout(()=>{btn.classList.remove('done');btn.innerHTML=old},1500);showToast('선택한 프롬프트가 복사되었습니다.')
+}
+[school,grade,nameEl,job,currentAction,futureAction,narr1,narr2].forEach(el=>el.addEventListener('input',update));
+document.querySelectorAll('[data-group="mood"] .option').forEach(opt=>opt.addEventListener('click',()=>{
+  document.querySelectorAll('[data-group="mood"] .option').forEach(o=>o.classList.remove('active'));
+  opt.classList.add('active');mood=opt.dataset.value;update();
+}));
+document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');activeTab=tab.dataset.tab;update();
+}));
+copyBtn.addEventListener('click',e=>copyText(activeText(),e.currentTarget));
+document.getElementById('refreshBtn').addEventListener('click',()=>{update();showToast('프롬프트를 새로 정리했습니다.')});
+
+function setupImageDrop(zoneId,imgId,onChange){
+  const dz=document.getElementById(zoneId),img=document.getElementById(imgId);
+  function setImage(src){img.src=src;dz.classList.add('has-img');onChange&&onChange(true)}
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag');const f=e.dataTransfer.files&&e.dataTransfer.files[0];if(f&&f.type.startsWith('image/')){const r=new FileReader();r.onload=()=>setImage(r.result);r.readAsDataURL(f)}});
+  dz.addEventListener('paste',e=>{const items=e.clipboardData&&e.clipboardData.items;if(!items)return;for(const it of items){if(it.type.startsWith('image/')){const f=it.getAsFile();const r=new FileReader();r.onload=()=>setImage(r.result);r.readAsDataURL(f);break}}});
+  dz.addEventListener('click',()=>dz.focus());
+  return{clear(){img.removeAttribute('src');dz.classList.remove('has-img');onChange&&onChange(false)}};
+}
+const charDrop=setupImageDrop('charZone','charImg',v=>{hasCharImage=v;update()});
+document.getElementById('clearChar').addEventListener('click',()=>charDrop.clear());
+
+const videoZone=document.getElementById('videoZone');
+const videoFile=document.getElementById('videoFile');
+const resultVideo=document.getElementById('resultVideo');
+videoZone.addEventListener('click',()=>{if(!videoZone.classList.contains('has-video'))videoFile.click()});
+videoZone.addEventListener('dragover',e=>{e.preventDefault();videoZone.style.borderColor='var(--blue)'});
+videoZone.addEventListener('dragleave',()=>videoZone.style.borderColor='');
+videoZone.addEventListener('drop',e=>{e.preventDefault();videoZone.style.borderColor='';const f=e.dataTransfer.files&&e.dataTransfer.files[0];if(f&&f.type.startsWith('video/'))setVideo(f)});
+videoFile.addEventListener('change',()=>{const f=videoFile.files&&videoFile.files[0];if(f)setVideo(f)});
+function setVideo(file){if(resultVideo.src)URL.revokeObjectURL(resultVideo.src);resultVideo.src=URL.createObjectURL(file);videoZone.classList.add('has-video');resultVideo.play().catch(()=>{})}
+update();
+</script>
+</body>
+</html>
