@@ -33,7 +33,7 @@
     <div>
       <span class="badge">🧭 STEP 1 · AI 리터러시 미션</span>
       <h1>AI와 잘 대화하기</h1>
-      <p>좋은 질문이 좋은 답을 만듭니다. 프롬프트의 차이가 결과를 어떻게 바꾸는지 직접 확인해 봅시다.</p>
+      <p>좋은 질문은 더 나은 답을 만들고, 더 나은 답은 나를 더 잘 이해하도록 도와줍니다. 프롬프트의 힘을 직접 경험해 봅시다.</p>
     </div>
     <a class="home" href="index.html">🏠 탐험 지도</a>
   </header>
@@ -44,7 +44,7 @@
       <div class="prompt-card bad">
         <h3>❌ 짧고 막연한 프롬프트</h3>
         <div class="prompt-box">초능력을 하나 만들어줘.</div>
-        <button class="show-btn" data-kind="bad">결과 보기 ▼</button>
+        <button class="show-btn" data-kind="bad">AI는 어떻게 답했을까요? 👀</button>
         <div class="answer" id="badAnswer"></div>
       </div>
       <div class="prompt-card good">
@@ -56,7 +56,7 @@
 기존에 흔히 나오는 순간이동, 투명인간 같은 능력 말고, 공부·친구관계·진로 고민에 도움이 되는 능력이면 좋겠어.
 
 초능력 이름, 능력 설명, 왜 중학생에게 필요한지, 사용할 때 주의할 점을 중학생이 이해하기 쉽게 알려줘.</div>
-        <button class="show-btn" data-kind="good">결과 보기 ▼</button>
+        <button class="show-btn" data-kind="good">AI는 어떻게 답했을까요? 👀</button>
         <div class="answer" id="goodAnswer"></div>
       </div>
     </div>
@@ -68,7 +68,7 @@
   </section>
 
   <section class="section">
-    <div class="title-row"><div class="num">2</div><div><h2>AI와 대화하는 4가지 비밀</h2><p class="mini">좋은 프롬프트에는 보통 역할, 정보, 부탁, 결과 형태가 들어갑니다.</p></div></div>
+    <div class="title-row"><div class="num">2</div><div><h2>좋은 프롬프트의 4가지 비밀</h2><p class="mini">좋은 프롬프트에는 보통 역할, 정보, 부탁, 결과 형태가 들어갑니다.</p></div></div>
     <div class="secrets">
       <div class="secret"><div class="emoji">🎭</div><h3>역할</h3><p>AI에게 어떤 전문가처럼 답할지 알려줍니다.</p></div>
       <div class="secret"><div class="emoji">🧩</div><h3>정보</h3><p>AI가 나를 이해할 수 있도록 충분한 단서를 줍니다.</p></div>
@@ -78,12 +78,10 @@
   </section>
 
   <section class="section">
-    <div class="title-row"><div class="num">3</div><div><h2>나만의 강점 분석 프롬프트 만들기</h2><p class="mini">왼쪽에 나의 정보를 입력하면 오른쪽에 AI에게 보낼 프롬프트가 자동으로 만들어집니다.</p></div></div>
+    <div class="title-row"><div class="num">3</div><div><h2>AI에게 나를 알려 주세요.</h2><p class="mini">왼쪽에 나의 정보를 입력하면 오른쪽에 AI에게 보낼 프롬프트가 자동으로 만들어집니다.</p></div></div>
     <div class="work">
       <div class="panel">
-        <div class="meta">
-          <div class="field"><label>🏫 학교</label><input id="school" placeholder="예: ○○중학교"></div>
-          <div class="field"><label>🎒 학년</label><input id="grade" placeholder="예: 3학년"></div>
+        <div class="meta" style="grid-template-columns:1fr;">
           <div class="field"><label>👤 이름</label><input id="name" placeholder="예: ○○○"></div>
         </div>
         <div class="field"><label>🎭 역할 <span class="hint">고정</span></label><input id="role" value="중학교 3학년 학생의 강점을 찾아주는 진로상담 전문가"></div>
@@ -94,7 +92,7 @@
         <div class="field"><label>🔥 5. 힘들어도 해내려고 하는 것</label><textarea id="effort" placeholder="예: 공부, 운동 연습, 모둠 과제, 어려운 문제 해결하기"></textarea></div>
       </div>
       <div class="panel">
-        <h3 style="font-size:24px;margin:0 0 8px">⭐ 프롬프트 별점</h3>
+        <h3 style="font-size:24px;margin:0 0 8px">⭐ 프롬프트 완성도</h3>
         <div class="score">
           <div class="score-item">역할 <span class="stars" id="starRole">★★★★★</span></div>
           <div class="score-item">정보 <span class="stars" id="starInfo">☆☆☆☆☆</span></div>
@@ -106,7 +104,7 @@
       </div>
     </div>
     <div class="result-panel">
-      <div class="field"><label>🤖 AI 답변 붙여넣기</label><textarea class="ai-result" id="aiResult" placeholder="ChatGPT 또는 Gemini가 답해 준 강점 5가지, 프로필 이름, 설명을 이곳에 붙여넣으세요."></textarea></div>
+      <div class="field"><label>🤖 AI가 알려준 나의 강점</label><textarea class="ai-result" id="aiResult" placeholder="ChatGPT 또는 Gemini가 알려준 강점, 프로필 이름, 설명을 이곳에 붙여넣어 주세요."></textarea></div>
       <div class="action-row"><button class="save-btn" id="saveBtn">🖼 활동 결과 이미지로 저장하기</button><button class="reset-btn" id="resetBtn">↺ 다시쓰기</button></div>
       <div class="save-guide">저장한 이미지를 패들렛에 올리면 선생님이 입력한 자료와 AI 답변을 함께 확인할 수 있습니다.</div>
     </div>
@@ -157,17 +155,17 @@ function stars(n){return '★★★★★'.slice(0,n)+'☆☆☆☆☆'.slice(0,
 function val(id){return $(id).value.trim()}
 function buildPrompt(){return `너는 ${val('role')||'중학교 3학년 학생의 강점을 찾아주는 진로상담 전문가'}야.\n\n다음은 나에 대한 정보야.\n\n1. 내가 좋아하는 것: ${val('like')||'[입력 필요]'}\n2. 내가 잘한다고 느끼는 것: ${val('good')||'[입력 필요]'}\n3. 친구들이 말하는 내 모습: ${val('friend')||'[입력 필요]'}\n4. 내가 자주 하는 행동: ${val('habit')||'[입력 필요]'}\n5. 힘들어도 해내려고 하는 것: ${val('effort')||'[입력 필요]'}\n\n아래 20가지 강점 중에서 나에게 가장 잘 어울리는 강점 5가지를 골라줘.\n\n${strengths}\n\n결과는 다음 형식으로 작성해줘.\n\n1. 강점 5가지와 그 이유를 표로 정리하기\n2. 나를 가장 잘 표현하는 프로필 이름 하나 지어주기\n   예: 호기심 많은 탐험가, 상상을 현실로 만드는 창조가, 마음을 잇는 공감가\n3. 이 프로필 이름이 붙은 이유를 3문장으로 설명하기\n4. 내가 더 키우면 좋은 강점 1가지 제안하기\n\n프로필 이름은 중학생이 별명처럼 기억하기 쉽고, 긍정적이며 개성이 드러나도록 만들어줘.\n중학교 3학년이 이해하기 쉬운 말로 따뜻하게 설명해줘. 단, 나에 대한 정보에 근거해서 설명하고, 근거가 부족한 내용은 단정하지 말아줘.`}
 function update(){const filled=['like','good','friend','habit','effort'].filter(id=>val(id).length>0).length; $('starInfo').textContent=stars(filled); $('promptPreview').textContent=buildPrompt();}
-['role','like','good','friend','habit','effort','school','grade','name'].forEach(id=>$(id).addEventListener('input',update)); update();
+['role','like','good','friend','habit','effort','name'].forEach(id=>$(id).addEventListener('input',update)); update();
 $('copyBtn').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(buildPrompt());$('copyBtn').textContent='✅ 복사 완료! AI에게 붙여넣어 보세요';setTimeout(()=>$('copyBtn').textContent='📋 프롬프트 복사하기',1600)}catch(e){alert('복사에 실패했습니다. 프롬프트를 직접 선택해 복사해 주세요.')}});
 function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
 function inputCard(label,text){return `<div class="cap-input-item"><b>${label}</b><span>${esc(text)||'미입력'}</span></div>`}
 
 $('resetBtn').addEventListener('click',()=>{
   if(!confirm('작성한 내용을 모두 지울까요?')) return;
-  ['school','grade','name','like','good','friend','habit','effort','reflection','aiResult'].forEach(id=>{ if($(id)) $(id).value=''; });
+  ['name','like','good','friend','habit','effort','reflection','aiResult'].forEach(id=>{ if($(id)) $(id).value=''; });
   update();
 });
-$('saveBtn').addEventListener('click',async()=>{const name=val('name')||'이름없음'; $('capMeta').innerHTML=`학교: ${esc(val('school')||'')}<br>학년: ${esc(val('grade')||'')}<br>이름: ${esc(name)}`; $('capInputs').innerHTML=inputCard('❤️ 좋아하는 것',val('like'))+inputCard('👍 잘한다고 느끼는 것',val('good'))+inputCard('👥 친구들이 말하는 내 모습',val('friend'))+inputCard('🔄 자주 하는 행동',val('habit'))+inputCard('🔥 힘들어도 해내려고 하는 것',val('effort'))+inputCard('💡 생각해보기',val('reflection')); $('capAi').textContent=val('aiResult')||'AI 답변을 붙여넣지 않았습니다.'; const canvas=await html2canvas($('captureArea'),{scale:2,backgroundColor:null,useCORS:true}); const a=document.createElement('a'); a.download=`AI와대화하기_${name}.png`; a.href=canvas.toDataURL('image/png'); a.click();});
+$('saveBtn').addEventListener('click',async()=>{const name=val('name')||'이름없음'; $('capMeta').innerHTML=`이름: ${esc(name)}`; $('capInputs').innerHTML=inputCard('❤️ 좋아하는 것',val('like'))+inputCard('👍 잘한다고 느끼는 것',val('good'))+inputCard('👥 친구들이 말하는 내 모습',val('friend'))+inputCard('🔄 자주 하는 행동',val('habit'))+inputCard('🔥 힘들어도 해내려고 하는 것',val('effort'))+inputCard('💡 생각해보기',val('reflection')); $('capAi').textContent=val('aiResult')||'AI 답변을 붙여넣지 않았습니다.'; const canvas=await html2canvas($('captureArea'),{scale:2,backgroundColor:null,useCORS:true}); const a=document.createElement('a'); a.download=`AI와대화하기_${name}.png`; a.href=canvas.toDataURL('image/png'); a.click();});
 </script>
 </body>
 </html>
